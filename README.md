@@ -1,11 +1,11 @@
-# Documentation Repository Internet of Agent
+# Documentation Repository AGNTCY
 
 This repository contains the documentation for the project, built using Sphinx
 with the Read the Docs template. The documentation sources are written in Markdown.
 
 ## Table of Contents
 
-- [Documentation Repository Internet of Agent](#documentation-repository-internet-of-agent)
+- [Documentation Repository AGNTCY](#documentation-repository-internet-of-agent)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [macOS](#macos)

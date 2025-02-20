@@ -1,6 +1,6 @@
 ## Introduction
 
-The Internet of Agents (IoA) project aims to revolutionize the way AI agents interact and collaborate within a connected ecosystem. By leveraging advanced protocols and frameworks, IoA facilitates seamless communication, data exchange, and interoperability among diverse AI agents, regardless of their underlying technologies or platforms.
+The AGNTCY project aims to revolutionize the way AI agents interact and collaborate within a connected ecosystem. By leveraging advanced protocols and frameworks, AGNTCY facilitates seamless communication, data exchange, and interoperability among diverse AI agents, regardless of their underlying technologies or platforms.
 
 ### Objectives
 
@@ -19,10 +19,10 @@ The Internet of Agents (IoA) project aims to revolutionize the way AI agents int
 ```
 
 1. **Multi-Agent Application Toolkit**: A set of agents and software libraries that support seamless creation of Multi-Agent workflows.
-1. **Agent Workflow Server**: A server that manages and executes workflows involving multiple AI agents, ensuring coordinated and efficient task execution.
+1. **Agent Workflow Server**: Uses the Agent Connect Protocol SDK to interact with agents run in other frameworks.
 1. **Agent Connect Protocol**: A protocol that defines a standard interface to invoke agents, configure them, provide input, retrieve output, and retrieve their manifest.
 1. **Agent Manifest**: A standard format to describes agents, their capabilities, their dependencies, and how to deploy or consume them.
-1. **Agent Gateway Protocol**: A protocol that defines the standards and guidelines for secure and efficient communication between AI agents. AGP ensures interoperability and seamless data exchange by specifying message formats, transport mechanisms, and interaction patterns.
+1. **Agent Gateway**: A protocol that defines the standards and guidelines for secure and efficient communication between AI agents. AGP ensures interoperability and seamless data exchange by specifying message formats, transport mechanisms, and interaction patterns.
 1. **Open Agent Schema Framework**: A framework that provides standardized data models and schemas for representing and validating data exchanged between agents. OSF ensures data integrity and consistency across the ecosystem.
 1. **Agent Directory**: A centralized service that stores and manages metadata about AI agents, including their capabilities, attributes, and constraints. This service enables agents to discover and connect with each other based on their advertised capabilities.
 1. **Decentralized Identity**: A system that leverages decentralized technologies to manage and verify the identities of AI agents, ensuring secure and trustworthy interactions.
@@ -40,9 +40,9 @@ The following diagram a simplified architecture of the core components described
 
 ### Benefits
 
-1. **Enhanced Collaboration**: By enabling seamless communication and data exchange, IoA fosters collaboration between AI agents, leading to more sophisticated and integrated solutions.
+1. **Enhanced Collaboration**: By enabling seamless communication and data exchange, the framework fosters collaboration between AI agents, leading to more sophisticated and integrated solutions.
 2. **Improved Efficiency**: Standardized protocols and frameworks reduce the complexity of integrating diverse AI agents, resulting in faster development and deployment of AI-driven applications.
 3. **Increased Security**: Robust security mechanisms ensure that interactions between agents are secure, protecting sensitive data and preventing unauthorized access.
-4. **Future-Proof Architecture**: The scalable and flexible design of IoA ensures that the ecosystem can grow and adapt to future advancements in AI technology.
+4. **Future-Proof Architecture**: The scalable and flexible design of the AGNTCY project ensures that the ecosystem can grow and adapt to future advancements in AI technology.
 
-The Internet of Agents project represents a significant step forward in the development of intelligent, interconnected systems. By providing a robust and standardized framework for AI agent interactions, IoA paves the way for innovative applications and services that can transform various industries and domains.
+The AGNTCY project represents a significant step forward in the development of intelligent, interconnected systems. By providing a robust and standardized framework for AI agent interactions, the project paves the way for innovative applications and services that can transform various industries and domains.

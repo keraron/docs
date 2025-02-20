@@ -19,9 +19,9 @@ import os
 
 # -- Project information -----------------------------------------------------
 
-project = "Internet of Agents"
-copyright = "2025, Internet of Agents Collective"
-author = "IoA Collective"
+project = "AGNTCY"
+copyright = "2025, AGNTCY Collective"
+author = "AGNTCY Collective"
 
 # The short X.Y version
 version = os.environ.get("VERSION", "v0.1")

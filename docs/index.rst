@@ -1,4 +1,4 @@
-Internet of Agents Components
+AGNTCY Components
 ==========================================
 
 .. toctree::
