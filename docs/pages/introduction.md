@@ -19,7 +19,7 @@ The AGNTCY project aims to revolutionize the way AI agents interact and collabor
 ```
 
 1. **Multi-Agent Application Toolkit**: A set of agents and software libraries that support seamless creation of Multi-Agent workflows.
-1. **Agent Workflow Server**: Uses the Agent Connect Protocol SDK to interact with agents run in other frameworks.
+1. **Agent Workflow Server**: A server that manages and executes workflows involving multiple AI agents, ensuring coordinated and efficient task execution.
 1. **Agent Connect Protocol**: A protocol that defines a standard interface to invoke agents, configure them, provide input, retrieve output, and retrieve their manifest.
 1. **Agent Manifest**: A standard format to describes agents, their capabilities, their dependencies, and how to deploy or consume them.
 1. **Agent Gateway**: A protocol that defines the standards and guidelines for secure and efficient communication between AI agents. AGP ensures interoperability and seamless data exchange by specifying message formats, transport mechanisms, and interaction patterns.
