@@ -82,6 +82,12 @@ jobs:
           name: docs-website
           path: ./.build/docs/html
 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.build/docs/html
+
   deploy:
     name: Deploy artifacts
     if: ${{ inputs.deploy == true || inputs.deploy == 'true' }}
