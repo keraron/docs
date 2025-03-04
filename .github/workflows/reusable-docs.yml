@@ -76,11 +76,11 @@ jobs:
         run: |
           task docs:build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: docs-website
-          path: ./.build/docs/html
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v3
+#        with:
+#          name: docs-website
+#          path: ./.build/docs/html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
