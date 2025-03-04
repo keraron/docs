@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Model Description &mdash; Internet of Agents v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fa47ad08"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extensions" href="data_model_extensions.html" />
+    <link rel="prev" title="Agent Gateway Architecture" href="gateway.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Internet of Agents
+          </a>
+              <div class="version">
+                v0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Abstract</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Toolkit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maa-toolkit.html">Multi-Agent Application Toolkit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Connect Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connect.html">Agent Connect Protocol</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Manifest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manifest.html">Agent Manifest</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Workflow Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Agent Workflow Server Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Gateway Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateway.html">Agent Gateway Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Agent Schema Framework</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Model Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#message-agentdatamodel">Message: AgentDataModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#locator-diagram">Locator Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extension-diagram">Extension Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#message-locator">Message: Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#message-extension">Message: Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_crewai_example.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Directory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir.html">Directory Architecture Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_services.html">Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Decentralized Identity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dlt.html">Decentralized Identity Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Observability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observability.html">Observability Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html#agent-task-matrix">Agent Task Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Composer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="composer.html">Multi-Agent Application Composer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Internet of Agents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Model Description</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/data_model.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-model-description">
+<h1>Data Model Description<a class="headerlink" href="#data-model-description" title="Link to this heading"></a></h1>
+<p>The data model schema defines a set of standards for AI agent content representation that aims to:</p>
+<ul class="simple">
+<li><p>Define common data structure to facilitate content standardisation, validation, and interoperability</p></li>
+<li><p>Ensure unique agent identification to address content identity and consumption</p></li>
+<li><p>Provide extension capabilities to enable support of additional features like security and categorisation</p></li>
+<li><p>Expose common interfaces for content management and discovery to enable implementation of custom services</p></li>
+</ul>
+<section id="schema">
+<h2>Schema<a class="headerlink" href="#schema" title="Link to this heading"></a></h2>
+<pre  class="mermaid">
+        classDiagram
+direction LR
+
+%% The data model defines a schema for AI agent content representation. The schema provides a way to describe agent's features, constraints, artifact locators, versioning, ownership, or relevant details.
+
+class AgentDataModel {
+  + string digest
+  + string name
+  + string version
+  + List~string~ authors
+  + Map~string,  string~ annotations
+  + string created_at
+  + List~Locator~ locators
+  + List~Extension~ extensions
+}
+AgentDataModel --&gt; `Locator`
+AgentDataModel --&gt; `Extension`
+AgentDataModel --o `Locator`
+
+%% Locators provide actual artifact locators of an agent. For example, this can reference sources such as helm charts, docker images, binaries, etc.
+
+class Locator {
+  + Map~string,  string~ annotations
+  + string name
+  + string type
+  + string url
+  + uint64 size
+  + string digest
+}
+AgentDataModel --o `Extension`
+
+%% Extensions provide dynamic descriptors for an agent. For example, security and categorization features can be described using extensions.
+
+class Extension {
+  + Map~string,  string~ annotations
+  + string name
+  + string version
+  + bytes specs
+}
+
+    </pre></section>
+<section id="message-agentdatamodel">
+<h2>Message: AgentDataModel<a class="headerlink" href="#message-agentdatamodel" title="Link to this heading"></a></h2>
+<div style="font-size: 12px; margin-top: -10px;" class="fqn">FQN: schema.model.AgentDataModel</div>
+<div class="comment"><span>The data model defines a schema for AI agent content representation. The schema provides a way to describe agent's features, constraints, artifact locators, versioning, ownership, or relevant details.</span><br/></div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Ordinal</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>digest</p></td>
+<td><p>1</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Digest defines complete content fingerprint. It can be used as a globally-unique ID of an Agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>2</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Name of the agent</p></td>
+</tr>
+<tr class="row-even"><td><p>version</p></td>
+<td><p>3</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Version of the agent</p></td>
+</tr>
+<tr class="row-odd"><td><p>authors</p></td>
+<td><p>4</p></td>
+<td><p>string</p></td>
+<td><p>Repeated</p></td>
+<td><p>List of agent’s authors in the form of <code class="docutils literal notranslate"><span class="pre">author-name</span> <span class="pre">&lt;author-email&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>annotations</p></td>
+<td><p>5</p></td>
+<td><p>string, string</p></td>
+<td><p>Map</p></td>
+<td><p>Additional metadata associated with this agent</p></td>
+</tr>
+<tr class="row-odd"><td><p>created_at</p></td>
+<td><p>6</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Timestamp of the agent creation time</p></td>
+</tr>
+<tr class="row-even"><td><p>locators</p></td>
+<td><p>7</p></td>
+<td><p>Locator</p></td>
+<td><p>Repeated</p></td>
+<td><p>List of source locators where this agent can be found or used from</p></td>
+</tr>
+<tr class="row-odd"><td><p>extensions</p></td>
+<td><p>8</p></td>
+<td><p>Extension</p></td>
+<td><p>Repeated</p></td>
+<td><p>List of extensions that describe this agent and its capabilities more in depth</p></td>
+</tr>
+</tbody>
+</table>
+<section id="locator-diagram">
+<h3>Locator Diagram<a class="headerlink" href="#locator-diagram" title="Link to this heading"></a></h3>
+<pre  class="mermaid">
+        classDiagram
+direction LR
+
+%% Locators provide actual artifact locators of an agent. For example, this can reference sources such as helm charts, docker images, binaries, etc.
+
+class Locator {
+  + Map~string,  string~ annotations
+  + string name
+  + string type
+  + string url
+  + uint64 size
+  + string digest
+}
+
+    </pre></section>
+<section id="extension-diagram">
+<h3>Extension Diagram<a class="headerlink" href="#extension-diagram" title="Link to this heading"></a></h3>
+<pre  class="mermaid">
+        classDiagram
+direction LR
+
+%% Extensions provide dynamic descriptors for an agent. For example, security and categorization features can be described using extensions.
+
+class Extension {
+  + Map~string,  string~ annotations
+  + string name
+  + string version
+  + bytes specs
+}
+
+    </pre></section>
+</section>
+<section id="message-locator">
+<h2>Message: Locator<a class="headerlink" href="#message-locator" title="Link to this heading"></a></h2>
+<div style="font-size: 12px; margin-top: -10px;" class="fqn">FQN: schema.model.AgentDataModel.Locator</div>
+<div class="comment"><span>Locators provide actual artifact locators of an agent. For example, this can reference sources such as helm charts, docker images, binaries, etc.</span><br/></div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Ordinal</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>annotations</p></td>
+<td><p>1</p></td>
+<td><p>string, string</p></td>
+<td><p>Map</p></td>
+<td><p>Metadata associated with this source locator</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>2</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Name of the source locator for this agent</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>3</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Type of the source locator, e.g. <code class="docutils literal notranslate"><span class="pre">docker-image,</span> <span class="pre">helm-chart</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>url</p></td>
+<td><p>4</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Location URI where this source locator can be found</p></td>
+</tr>
+<tr class="row-even"><td><p>size</p></td>
+<td><p>5</p></td>
+<td><p>uint64</p></td>
+<td><p></p></td>
+<td><p>Size in bytes of the source locator pointed by the <code class="docutils literal notranslate"><span class="pre">url</span></code> property</p></td>
+</tr>
+<tr class="row-odd"><td><p>digest</p></td>
+<td><p>6</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Digest of the source locator pointed by the <code class="docutils literal notranslate"><span class="pre">url</span></code> property</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="message-extension">
+<h2>Message: Extension<a class="headerlink" href="#message-extension" title="Link to this heading"></a></h2>
+<div style="font-size: 12px; margin-top: -10px;" class="fqn">FQN: schema.model.AgentDataModel.Extension</div>
+<div class="comment"><span>Extensions provide dynamic descriptors for an agent. For example, security and categorization features can be described using extensions.</span><br/></div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Ordinal</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>annotations</p></td>
+<td><p>1</p></td>
+<td><p>string, string</p></td>
+<td><p>Map</p></td>
+<td><p>Metadata associated with this extension</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>2</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Name of the extension attached to this agent</p></td>
+</tr>
+<tr class="row-even"><td><p>version</p></td>
+<td><p>3</p></td>
+<td><p>string</p></td>
+<td><p></p></td>
+<td><p>Version of the extension attached to this agent</p></td>
+</tr>
+<tr class="row-odd"><td><p>specs</p></td>
+<td><p>4</p></td>
+<td><p>bytes</p></td>
+<td><p></p></td>
+<td><p>Generic specification schema of this extension. Value of this property is JSON-encoded.</p></td>
+</tr>
+</tbody>
+</table>
+<!-- Created by: Proto Diagram Tool -->
+<!-- https://github.com/GoogleCloudPlatform/proto-gen-md-diagrams -->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gateway.html" class="btn btn-neutral float-left" title="Agent Gateway Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_model_extensions.html" class="btn btn-neutral float-right" title="Extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Internet of Agents Collective.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

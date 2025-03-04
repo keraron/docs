@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Connect Protocol &mdash; Internet of Agents v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fa47ad08"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Agent Manifest" href="manifest.html" />
+    <link rel="prev" title="Multi-Agent Application Toolkit" href="maa-toolkit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Internet of Agents
+          </a>
+              <div class="version">
+                v0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Abstract</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Toolkit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maa-toolkit.html">Multi-Agent Application Toolkit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Connect Protocol</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Agent Connect Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acp-requirements">ACP Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#invocation">Invocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-retrieval">Output Retrieval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capabilities-and-schema-definitions">Capabilities and Schema definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-definitions">Error Definitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Manifest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manifest.html">Agent Manifest</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Workflow Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Agent Workflow Server Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Gateway Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateway.html">Agent Gateway Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Agent Schema Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_model.html">Data Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_crewai_example.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Directory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir.html">Directory Architecture Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_services.html">Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Decentralized Identity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dlt.html">Decentralized Identity Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Observability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observability.html">Observability Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html#agent-task-matrix">Agent Task Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Composer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="composer.html">Multi-Agent Application Composer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Internet of Agents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Agent Connect Protocol</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/connect.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="agent-connect-protocol">
+<h1>Agent Connect Protocol<a class="headerlink" href="#agent-connect-protocol" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Existing Multi-Agent Systems (MAS) provide convenient ways to build Multi-Agent applications that combine various agents and enable them to communicate with each other.</p>
+<p>Such communication occurs within the MAS using internal mechanisms and APIs.</p>
+<p>Building the Internet of Agents requires agents built by different parties, potentially for different MAS and potentially running in different locations to interact.</p>
+<p>While interaction between co-located agents implemented through the same MAS is trivial, it is harder in case the agents are not natively compatible or in case they run in different locations.</p>
+<p>We propose a solution where all agents are able to communicate over the network using a standard protocol to interoperate. We call it the <strong>Agent Connect Protocol</strong>, we also interchangeably use the acronym <strong>ACP</strong> to refer to it.</p>
+<p>This document describes the main requirements and design principles of ACP.</p>
+<p>The current specification of ACP can be found <a class="reference external" href="https://agntcy.github.io/acp-spec">here</a>, ACP Software Development Kit can be found <a class="reference external" href="https://agntcy.github.io/acp-sdk">here</a>.</p>
+</section>
+<section id="acp-requirements">
+<h2>ACP Requirements<a class="headerlink" href="#acp-requirements" title="Link to this heading"></a></h2>
+<p>Agent Connect Protocol needs to formally specify the network interactions needed to address the following:</p>
+<ul class="simple">
+<li><p><strong>Authentication</strong>: Define how caller authenticates with an agent and what its permissions are.</p></li>
+<li><p><strong>Configuration</strong>: Define how to configure a remote agent.</p></li>
+<li><p><strong>Invocation</strong>: Define how to invoke a remote agent providing input for its execution.</p></li>
+<li><p><strong>Output retrieval and interrupt Handling</strong>: Define how to retrieve the result of an agent invocation. Different interaction modes should be supported: synchronous, asynchronous, and streaming. This should include interrupt handling, i.e. how agents notify the caller about execution suspension to ask for additional input.</p></li>
+<li><p><strong>Capabilities and Schema definitions</strong>: Retrieve details about the agent supported capabilities and the data structures definitions for configuration, input, and output.</p></li>
+<li><p><strong>Error definitions</strong>: receive error notifications with meaningful error codes and explanations.</p></li>
+</ul>
+<section id="authentication-and-authorization">
+<h3>Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Link to this heading"></a></h3>
+<p>Agents invoked remotely need to authenticate the caller and make sure they have the proper authorization to perform the invocation.</p>
+<p>Authorization mechanisms are outside the scope of the ACP specification.</p>
+<p>ACP does not enforce a single authentication scheme to be used by all agents. Instead, it defines a list of allowed authentication schemes and lets agents declare which one is adopted.</p>
+<p>For the reason above, ACP must define an endpoint that does not require authentication and returns the specific authentication scheme that is supported by the agent.</p>
+<p><a id="configuration"></a></p>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
+<p>Agents may support configuration.</p>
+<p>Configuration is meant to provide parameters needed by the agent to function and/or to flavor their behavior.</p>
+<p>Configurations are typically valid for multiple invocations.</p>
+<p>ACP needs to define an endpoint to provide agent configuration.</p>
+<p>This endpoint must be distinct by the invocation endpoint, in this case it must return an identifier of the configured instance of the agent that can be used in multiple subsequent invocations.</p>
+<p>Invocation endpoint should also provide an option to specify the configuration. In this case the configuration is valid only for the specific invocation.</p>
+<p>Format of the configuration data structure is specified through a schema, see <a class="reference internal" href="#schemas"><span class="xref myst">Schema Definitions</span></a></p>
+<p>Configuration endpoint may return an error. See <a class="reference internal" href="#errors"><span class="xref myst">Error Definitions</span></a></p>
+<p><a id="invocation"></a></p>
+</section>
+<section id="invocation">
+<h3>Invocation<a class="headerlink" href="#invocation" title="Link to this heading"></a></h3>
+<p>ACP must define an invocation endpoint that triggers one execution of an agent or resume a previously interrupted execution of an agent.</p>
+<p>Invocation endpoint must accept input as parameter. An input provides specific information and contexts for the agent to operate. Format of the input data structure is specified through a schema, see <a class="reference internal" href="#schemas"><span class="xref myst">Schema Definitions</span></a>.</p>
+<p>Invocation endpoint must accept an optional configuration as parameter. When provided, this configuration is valid only for this invocation. In alternative, invocation endpoint must accept the identifier of a previously configured instance of an agent (See <a class="reference internal" href="#configuration"><span class="xref myst">Configuration</span></a>).</p>
+<p>Invocation endpoint must accept an optional callback as parameter. When provided, the output of the invocation is provided asynchronously through the provided callback (See <a class="reference internal" href="#output"><span class="xref myst">Output Retrieval and Interrupt Handling</span></a>).</p>
+<p>Invocation endpoint must accept an optional execution identifier as parameter. In this case, the agent is requested to resume a previously interrupted execution, identified by the execution identifier.</p>
+<p>Invocation endpoint must return the output of the execution, in case it is provided synchronously.</p>
+<p>Invocation endpoint must return an execution identifier, which is then used to receive asynchronous output and to resume an interrupted execution.</p>
+<p>Invocation endpoint may return an error. See <a class="reference internal" href="#errors"><span class="xref myst">Error Definitions</span></a></p>
+<p><a id="output"></a></p>
+</section>
+<section id="output-retrieval">
+<h3>Output Retrieval<a class="headerlink" href="#output-retrieval" title="Link to this heading"></a></h3>
+<p>Once an agent is invoked, it can provide output as a result of its operations.</p>
+<p>Output can be provided to the caller synchronously, i.e. as a response of the invocation endpoint, or asynchronously, i.e. through a callback, provided as input of the invocation endpoint.</p>
+<p>Output can be provided when different conditions occur:</p>
+<ol class="arabic simple">
+<li><p>The agent has terminated its execution and provides the final result of the execution.</p></li>
+<li><p>The agent has interrupted its execution because it needs additional input, e.g. approval, chat interaction etc.</p></li>
+<li><p>The agent is still running but it provides partial results, i.e. streaming</p></li>
+</ol>
+<p>Output must carry information about which condition occurred.</p>
+<p>Format of the output data structure is specified through a schema, see <a class="reference internal" href="#schemas"><span class="xref myst">Schema Definitions</span></a>.</p>
+<p><a id="schemas"></a></p>
+</section>
+<section id="capabilities-and-schema-definitions">
+<h3>Capabilities and Schema definitions<a class="headerlink" href="#capabilities-and-schema-definitions" title="Link to this heading"></a></h3>
+<p>ACP does not mandate the format of the data structures used to carry information to and from an agent, but it allows agents to provide definitions of those formats through ACP.
+ACP must define an endpoint that provides schema definitions for configuration, input, and output.</p>
+<p>Different agents may implement different parts of the protocol, for example: an agent may support streaming, while another may only support full responses; an agent may support threads while another may not.</p>
+<p>ACP must define and endpoint that provides details about the specific capabilities that the agent supports.</p>
+<p>Schemas, agent capabilities and other essential information that describe an agent are also needed in what we call the <a class="reference internal" href="manifest.html"><span class="std std-doc">Agent Manifest</span></a>. For this reason, ACP exposes an endpoint that serves the Agent Manifest.</p>
+<p><a id="errors"></a></p>
+</section>
+<section id="error-definitions">
+<h3>Error Definitions<a class="headerlink" href="#error-definitions" title="Link to this heading"></a></h3>
+<p>Each of the operations offered by ACP can produce an error.</p>
+<p>Errors can be provided synchronously by each of the invoked endpoints, or asynchronously when they occur during an execution that supports asynchronous output.</p>
+<p>ACP must define errors for the most common error conditions. Each definition must include:</p>
+<ul class="simple">
+<li><p>Error code</p></li>
+<li><p>Description of the error condition</p></li>
+<li><p>A flag that says if the error is transient or permanent</p></li>
+<li><p>An optional schema definition of additional information that the error can be associated with.</p></li>
+</ul>
+<p>ACP also allows agents to provide definitions of errors specific for that agent. For this purpose, ACP must define an endpoint that provides schema definitions for all agent specific error that are not included in the ACP specification.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="maa-toolkit.html" class="btn btn-neutral float-left" title="Multi-Agent Application Toolkit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manifest.html" class="btn btn-neutral float-right" title="Agent Manifest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Internet of Agents Collective.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

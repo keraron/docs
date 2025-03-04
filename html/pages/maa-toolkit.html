@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Agent Application Toolkit &mdash; Internet of Agents v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fa47ad08"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Agent Connect Protocol" href="connect.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Internet of Agents
+          </a>
+              <div class="version">
+                v0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Abstract</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Toolkit</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-Agent Application Toolkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-o-mapper-agent">I/O Mapper Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-bridge-agent">API Bridge Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#semantic-router-agent">Semantic Router Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#human-in-the-loop-agent">Human in the Loop Agent</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Connect Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connect.html">Agent Connect Protocol</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Manifest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manifest.html">Agent Manifest</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Workflow Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Agent Workflow Server Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Gateway Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateway.html">Agent Gateway Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Agent Schema Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_model.html">Data Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_crewai_example.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Directory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir.html">Directory Architecture Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_services.html">Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Decentralized Identity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dlt.html">Decentralized Identity Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Observability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observability.html">Observability Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html#agent-task-matrix">Agent Task Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Composer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="composer.html">Multi-Agent Application Composer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Internet of Agents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Multi-Agent Application Toolkit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/maa-toolkit.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multi-agent-application-toolkit">
+<h1>Multi-Agent Application Toolkit<a class="headerlink" href="#multi-agent-application-toolkit" title="Link to this heading"></a></h1>
+<p>The Multi-Agent Application Toolkit is a comprehensive suite of agents designed to tackle the prevalent challenges encountered in developing applications that require effective coordination among agents originating from diverse sources, APIs, and humans.</p>
+<p>In the following we list and describes the agents that compose this toolkit.</p>
+<section id="i-o-mapper-agent">
+<h2>I/O Mapper Agent<a class="headerlink" href="#i-o-mapper-agent" title="Link to this heading"></a></h2>
+<p>In multi-agent applications, ensuring seamless communication between two agents requires that the output of the first agent is compatible with the input of the second agent. This compatibility must be achieved across three distinct levels:
+1.	Transport Level: Both agents must utilize the same transport protocol to exchange data.
+2.	Format Level: Both agents should convey information using the same format, such as identical JSON data structures, or in case of natural language, same semantic structure.
+3.	Semantic Level: Both agents must “discuss the same subject”, meaning the information expected by the second agent should be included in the output of the first agent.</p>
+<p>Discrepancies at any of these levels can hinder effective communication between agents.</p>
+<p>Assuming semantic compatibility among agents, where the first agent’s output inherently contains the necessary information for the second agent, the I/O Mapper Agent is designed to address compatibility at the format and semantic levels. Implemented as an agent itself, it leverages a large language model (LLM) to ensure that the output from one agent is transformed to be compatible with the input of another. This transformation can encompass various processes, such as:
+•	JSON Structure Transcoding: Re-mapping a JSON dictionary into another format.
+•	Text Summarization: Condensing text or removing extraneous information.
+•	Text Translation: Converting text from one language to another.
+•	Text Manipulation: Reformulating parts of one text into another form.
+•	A combination of the above</p>
+<p>The I/O Mapper Agent operates using schema definitions of input and output as specified by the Agent Connect Protocol, which should include natural language descriptions of data structures and, preferably, numerous examples to facilitate accurate LLM inference.</p>
+</section>
+<section id="api-bridge-agent">
+<h2>API Bridge Agent<a class="headerlink" href="#api-bridge-agent" title="Link to this heading"></a></h2>
+<p>In the realm of agentic applications, seamless connectivity to APIs is a fundamental requirement. The process of interfacing with an API should be as straightforward as engaging with a remote agent. This is where the API Bridge Agent comes into play. Its primary function is to ensure that APIs can be accessed and utilized through the Agent Connect Protocol (ACP), akin to how agents are made accessible through ACP by the agent workflow server.</p>
+<p>The API Bridge Agent is built as an API gateway plugin, which can be easily configured using any OpenAPI specification. Its core capabilities include:</p>
+<ul class="simple">
+<li><p>Transforming natural language requests received via ACP into REST API calls.</p></li>
+<li><p>Converting API responses back into natural language to be communicated through ACP.</p></li>
+</ul>
+<p>Additionally, the API Bridge Agent offers advanced features for automatically selecting the most appropriate API from a set of available options in response to a given natural language request.</p>
+<p>Moreover, the API Bridge Agent is designed to support a wide array of pre-configured API services, providing extensive “out-of-the-box” functionality.</p>
+</section>
+<section id="semantic-router-agent">
+<h2>Semantic Router Agent<a class="headerlink" href="#semantic-router-agent" title="Link to this heading"></a></h2>
+<p>When defining a multi-agent application workflow, it is often needed to make decisions based on the output of invoked agents.</p>
+<p>In a graph-based agentic application (e.g., Langgraph), this corresponds to decide which node in the graph to execute based on the current state of the graph.</p>
+<p>While some of these decisions can be trivially implemented by a simple if condition, and while others can be so complex to require a dedicated agent to be processed, there is a large set of common decisions that are based on semantic similarity.</p>
+<p>This is where the Semantic Router Agent comes in. The semantic router agent is a component, modelled as a node in the graph, that takes an input in the form of natural language and decides where to go next.  Here next means following an edge in the graph that is associated to the semantically closest reference natural language text.  In other words: the semantic router agent chooses the next node based on a semantic routing table.</p>
+<p><strong>An example</strong>:</p>
+<blockquote>
+<div><p>An assistant agent receives a prompt from a user during a conversation and based on the content of such prompt, it needs to perform different actions:</p>
+<ul class="simple">
+<li><p>if the user is posting a new request, start the request handling flow;</p></li>
+<li><p>if the user is satisfied with the conversation, terminate it and direct the flow to the auditing agent;</p></li>
+<li><p>if the user is not satisfied, involve a human;</p></li>
+</ul>
+<p>The above can be implemented with a semantic router agent with three
+possible routes, with each route  associated with a text describing what  is the expected content of the user prompt.</p>
+</div></blockquote>
+</section>
+<section id="human-in-the-loop-agent">
+<h2>Human in the Loop Agent<a class="headerlink" href="#human-in-the-loop-agent" title="Link to this heading"></a></h2>
+<p>In many cases, agentic applications require human input.</p>
+<p>Involving the human requires two things:</p>
+<ul class="simple">
+<li><p>Interrupt a multi-application flow to wait for such human input. This is provided by the different frameworks in different ways, but  corresponds to pausing the application and resuming it when input is available.</p></li>
+<li><p>Engage with the human to collect the input. This can happen in many ways and each application will have its own preferences.</p></li>
+</ul>
+<p>The Human in the Loop (HIL) Agent is an agent that implements most common methods to engage with humans.</p>
+<p>Few examples below:</p>
+<ul class="simple">
+<li><p>Webhook: the agent calls a provided webhook to request for input and receive it through OpenAPI/REST.</p></li>
+<li><p>Email engagement: the agent sends an email and offers a web interface to provide input.</p></li>
+<li><p>Webex/slack/… engagement: the agent uses a webex/slack/… channel to request input.</p></li>
+<li><p>etc.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="connect.html" class="btn btn-neutral float-right" title="Agent Connect Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Internet of Agents Collective.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

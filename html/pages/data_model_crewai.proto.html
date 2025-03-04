@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: schema.model.crewai &mdash; Internet of Agents v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fa47ad08"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Internet of Agents
+          </a>
+              <div class="version">
+                v0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Abstract</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Toolkit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maa-toolkit.html">Multi-Agent Application Toolkit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Connect Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connect.html">Agent Connect Protocol</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Manifest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manifest.html">Agent Manifest</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Workflow Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Agent Workflow Server Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Gateway Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateway.html">Agent Gateway Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Agent Schema Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_model.html">Data Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_crewai_example.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Directory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir.html">Directory Architecture Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_services.html">Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Decentralized Identity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dlt.html">Decentralized Identity Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Observability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observability.html">Observability Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html#agent-task-matrix">Agent Task Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Composer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="composer.html">Multi-Agent Application Composer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Internet of Agents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Package: schema.model.crewai</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/data_model_crewai.proto.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-schema-model-crewai">
+<h1>Package: schema.model.crewai<a class="headerlink" href="#package-schema-model-crewai" title="Link to this heading"></a></h1>
+<div class="comment"><span>SPDX-FileCopyrightText: Copyright (c) 2025 Cisco and/or its affiliates. SPDX-License-Identifier: Apache-2.0</span><br/></div>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"></a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Import</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="crewaiagentextensionspecs-diagram">
+<h3>CrewaiAgentExtensionSpecs Diagram<a class="headerlink" href="#crewaiagentextensionspecs-diagram" title="Link to this heading"></a></h3>
+<pre  class="mermaid">
+        classDiagram
+direction LR
+
+%% CrewaiAgentExtensionSpecs defines an extension schema that encodes CrewAI agent information.
+
+class CrewaiAgentExtensionSpecs {
+  + string name
+  + string role
+  + string goal
+  + string backstory
+  + string llm
+  + List~Task~ task
+}
+CrewaiAgentExtensionSpecs --&gt; `Task`
+CrewaiAgentExtensionSpecs --o `Task`
+
+%% Basic information about CrewAI agent tasks.
+
+class Task {
+  + string name
+  + string description
+  + string context
+  + string expected_output
+  + string output_format
+}
+
+    </pre></section>
+</section>
+<section id="message-crewaiagentextensionspecs">
+<h2>Message: CrewaiAgentExtensionSpecs<a class="headerlink" href="#message-crewaiagentextensionspecs" title="Link to this heading"></a></h2>
+<div style="font-size: 12px; margin-top: -10px;" class="fqn">FQN: schema.model.crewai.CrewaiAgentExtensionSpecs</div>
+<div class="comment"><span>CrewaiAgentExtensionSpecs defines an extension schema that encodes CrewAI agent information.</span><br/></div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Field</th>
+<th>Ordinal</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>1</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>role</td>
+<td>2</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>goal</td>
+<td>3</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>backstory</td>
+<td>4</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>llm</td>
+<td>5</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>task</td>
+<td>6</td>
+<td>Task</td>
+<td>Repeated</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="task-diagram">
+<h3>Task Diagram<a class="headerlink" href="#task-diagram" title="Link to this heading"></a></h3>
+<pre  class="mermaid">
+        classDiagram
+direction LR
+
+%% Basic information about CrewAI agent tasks.
+
+class Task {
+  + string name
+  + string description
+  + string context
+  + string expected_output
+  + string output_format
+}
+
+    </pre></section>
+</section>
+<section id="message-task">
+<h2>Message: Task<a class="headerlink" href="#message-task" title="Link to this heading"></a></h2>
+<div style="font-size: 12px; margin-top: -10px;" class="fqn">FQN: schema.model.crewai.CrewaiAgentExtensionSpecs.Task</div>
+<div class="comment"><span>Basic information about CrewAI agent tasks.</span><br/></div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Field</th>
+<th>Ordinal</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>1</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td>2</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>context</td>
+<td>3</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>expected_output</td>
+<td>4</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output_format</td>
+<td>5</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- Created by: Proto Diagram Tool -->
+<!-- https://github.com/GoogleCloudPlatform/proto-gen-md-diagrams -->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Internet of Agents Collective.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

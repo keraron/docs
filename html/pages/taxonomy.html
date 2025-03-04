@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taxonomy of tasks &mdash; Internet of Agents v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fa47ad08"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Internet of Agents
+          </a>
+              <div class="version">
+                v0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Abstract</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Toolkit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maa-toolkit.html">Multi-Agent Application Toolkit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Connect Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connect.html">Agent Connect Protocol</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Manifest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manifest.html">Agent Manifest</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Workflow Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Agent Workflow Server Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Gateway Protocol</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateway.html">Agent Gateway Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Agent Schema Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_model.html">Data Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_crewai_example.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Directory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir.html">Directory Architecture Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_model_services.html">Services</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Decentralized Identity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dlt.html">Decentralized Identity Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Observability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observability.html">Observability Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agent Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html#agent-task-matrix">Agent Task Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Multi-Agent Application Composer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="composer.html">Multi-Agent Application Composer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Internet of Agents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Taxonomy of tasks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/taxonomy.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="taxonomy-of-tasks">
+<h1>Taxonomy of tasks<a class="headerlink" href="#taxonomy-of-tasks" title="Link to this heading"></a></h1>
+<p>Here we present a taxonomy of tasks for LLM agents. We start by discussing
+global tasks, based on <a class="reference external" href="https://huggingface.co/tasks">https://huggingface.co/tasks</a>. We complete that overview
+with a taxonomy of some specialized tasks, more relevant for Cisco. We finish by
+providing a very detailed taxonomy of tasks related to NetOPS, which is most
+relevant for Cisco.</p>
+<section id="taxonomy-of-global-tasks">
+<h2>Taxonomy of Global Tasks<a class="headerlink" href="#taxonomy-of-global-tasks" title="Link to this heading"></a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Task</th>
+<th>Subtasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Natural Language Processing</td>
+<td>Question Answering</td>
+</tr>
+<tr>
+<td></td>
+<td>Summarization</td>
+</tr>
+<tr>
+<td></td>
+<td>Translation</td>
+</tr>
+<tr>
+<td></td>
+<td>Text Generation</td>
+</tr>
+<tr>
+<td></td>
+<td>Text Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Table Question Answering</td>
+</tr>
+<tr>
+<td></td>
+<td>Zero-Shot Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Sentence Similarity</td>
+</tr>
+<tr>
+<td></td>
+<td>Feature Extraction</td>
+</tr>
+<tr>
+<td></td>
+<td>Fill-Mask</td>
+</tr>
+<tr>
+<td></td>
+<td>Token Classification</td>
+</tr>
+<tr>
+<td>Computer Vision</td>
+<td>Image Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Image Feature Extraction</td>
+</tr>
+<tr>
+<td></td>
+<td>Image Segmentation</td>
+</tr>
+<tr>
+<td></td>
+<td>Video Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Text-to-Image</td>
+</tr>
+<tr>
+<td></td>
+<td>Text-to-Video</td>
+</tr>
+<tr>
+<td></td>
+<td>Image-to-Image</td>
+</tr>
+<tr>
+<td></td>
+<td>Image-to-Text</td>
+</tr>
+<tr>
+<td></td>
+<td>Keypoint Detection</td>
+</tr>
+<tr>
+<td></td>
+<td>Mask Generation</td>
+</tr>
+<tr>
+<td></td>
+<td>Object Detection</td>
+</tr>
+<tr>
+<td></td>
+<td>Depth Estimation</td>
+</tr>
+<tr>
+<td></td>
+<td>Unconditional Image Generation</td>
+</tr>
+<tr>
+<td></td>
+<td>Zero-Shot Image Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Zero-Shot Object Detection</td>
+</tr>
+<tr>
+<td></td>
+<td>Text-to-3D</td>
+</tr>
+<tr>
+<td></td>
+<td>Image-to-3D</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Audio Classification</td>
+</tr>
+<tr>
+<td></td>
+<td>Audio-to-Audio</td>
+</tr>
+<tr>
+<td></td>
+<td>Automatic Speech Recognition</td>
+</tr>
+<tr>
+<td></td>
+<td>Text-to-Speech</td>
+</tr>
+<tr>
+<td>Multimodal</td>
+<td>Contribute Audio-Text-to-Text</td>
+</tr>
+<tr>
+<td></td>
+<td>Contribute Document Question Answering</td>
+</tr>
+<tr>
+<td></td>
+<td>Image-Text-to-Text</td>
+</tr>
+<tr>
+<td></td>
+<td>Video-Text-to-Text</td>
+</tr>
+<tr>
+<td></td>
+<td>Visual Question Answering</td>
+</tr>
+<tr>
+<td></td>
+<td>Any-to-Any</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="taxonomy-of-specialized-tasks">
+<h2>Taxonomy of Specialized Tasks<a class="headerlink" href="#taxonomy-of-specialized-tasks" title="Link to this heading"></a></h2>
+<p>Here we give a taxonomy of some more specialized tasks, relevant to Cisco. For
+each task, we give an appreciation of the research community’s progress on it,
+some example metrics and explain how hard it is to evaluate the task.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Task</th>
+<th>Subtasks</th>
+<th>Progress</th>
+<th>Metrics</th>
+<th style="text-align: left;">Hardness to evaluate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Natural<br> Language<br> Processing</td>
+<td></td>
+<td>Advanced</td>
+<td>Next-word-<br>prediction.<br> Cloze tasks.<br> Otherwise more<br> ambiguous.</td>
+<td style="text-align: left;">If task can be<br> rephrased as<br> next-word-prediction,<br> performance is known.<br> Otherwise more<br> ambiguous.</td>
+</tr>
+<tr>
+<td></td>
+<td>Natural language<br> understanding</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Reasoning</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Natural language<br> generation</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Multi-lingual</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td>Retrieval<br> augmented<br> generation</td>
+<td></td>
+<td>Medium<br> (search needs<br> improvement).</td>
+<td>Context<br> relevance.<br> Answer<br> relevance.<br> Faithfullness.<br> Retriever quality.</td>
+<td style="text-align: left;">Rather difficult,<br> as there are <br>multiple aspects.<br> Quality of <br>generated text is<br> usually evaluated<br> with another LLM <br>- which is shabby.</td>
+</tr>
+<tr>
+<td></td>
+<td>Retrieval of <br>information</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Generation of <br>output</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td>Coding</td>
+<td></td>
+<td>Medium.<br> The models<br> are not<br> sample-efficient.<br> Syntactically <br>incorrect<br> or undefined<br> code.<br> Degradation with<br> docstring length<br> and number of<br> building blocks.</td>
+<td>Pass rate on<br> unit-tests.<br> Execution <br> accuracy.<br> Compilation <br> accuracy.</td>
+<td style="text-align: left;">Rather straight<br> forward.</td>
+</tr>
+<tr>
+<td></td>
+<td>Translating natural<br> language into<br> code</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Translation code into<br> docstrings</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Filling in code<br> templates</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Refactoring and <br>optimising existing<br> code</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td>Mathematical<br> reasoning</td>
+<td></td>
+<td>Early stages.<br> Mixing words and<br> numbers is hard.<br> Probabilistic nature<br> of LLMs contradicts<br> deterministic<br> answers.</td>
+<td>Exact solution<br> to problems</td>
+<td style="text-align: left;">Rather straight <br>forward, <br> except for theorem <br>proving etc.</td>
+</tr>
+<tr>
+<td></td>
+<td>Pure Mathematical<br> Operations</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Math Word<br> Problems</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Geometry</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td></td>
+<td>Automated Theorem<br> Proving</td>
+<td></td>
+<td></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="taxonomy-of-netops-tasks">
+<h2>Taxonomy of NetOPS Tasks<a class="headerlink" href="#taxonomy-of-netops-tasks" title="Link to this heading"></a></h2>
+<p>Here we discuss tasks related to Network Operations (NetOPS). We distinguish at
+least five global tasks that can be done using LLMs:</p>
+<ul class="simple">
+<li><p>Answering NetOPS knowledge questions (e.g., What is the order of bandwidth
+measurement from smallest to largest?);</p></li>
+<li><p>Generate a query on a dataset (e.g., produce Python code to filter a pandas
+Dataframe);</p></li>
+<li><p>Retrieval Augmented Generation, where the database contains information about
+components of a network (e.g., a knowledge base, log collection, ticketing
+system);</p></li>
+<li><p>Orchestration of multiple agents and/or tools, where a LLM takes in a prompt
+and decides what action to take (e.g., call upon an agent to inspect a
+database, another one to do data analysis, etc.). Examples:</p>
+<ul>
+<li><p>Network monitoring;</p></li>
+<li><p>Network topology planning;</p></li>
+<li><p>Network device management;</p></li>
+<li><p>Network troubleshooting;</p></li>
+<li><p>Network performance optimisation;</p></li>
+<li><p>Network security.</p></li>
+<li><p>Network backup and recovery;</p></li>
+</ul>
+</li>
+<li><p>Network engineering (overlapping with the previous task):</p>
+<ul>
+<li><p>Network Design and Planning;</p></li>
+<li><p>Network Implementation;</p></li>
+<li><p>Network Analytics;</p></li>
+<li><p>Network Management.</p></li>
+</ul>
+</li>
+</ul>
+<section id="tasks-from-network-engineering">
+<h3>Tasks from Network Engineering<a class="headerlink" href="#tasks-from-network-engineering" title="Link to this heading"></a></h3>
+<p>A rather up-to-date review of LLMs used in the context of network engineering
+can be found in <a class="reference external" href="https://www.mdpi.com/1999-5903/16/10/365">Large Language Models Meet Next-Generation Networking
+Technologies: A Review</a>. We distill
+here the four categories of network engineering tasks, together with the cited
+works on specific subtasks. References are with respect to this review.</p>
+<section id="network-design-and-planning">
+<h4>Network Design and Planning<a class="headerlink" href="#network-design-and-planning" title="Link to this heading"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Subtasks</th>
+<th>Work</th>
+<th>Baseline Model(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load Balancing, <br> Capacity Planning</td>
+<td>Desai et al. [133]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Intent-Based Networking, <br> Telecommunications, 6G,<br> Network Energy Saving</td>
+<td>Zou et al. [130]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>QoE, <br> Bandwidth Management, <br> Job Scheduling, <br> Adaptive Bitrate Streaming</td>
+<td>NetLLM [129]</td>
+<td>LLaMA 2</td>
+</tr>
+<tr>
+<td>QoS, <br> Network Provisioning, <br> Cloud-Edge Resource Allocation and Scheduling</td>
+<td>NetGPT [134]</td>
+<td>GPT-2,<br> LLaMA</td>
+</tr>
+<tr>
+<td>QoS, <br> Network Service Recommendation</td>
+<td>llmQoS [132]</td>
+<td>RoBERTa,<br> Phi-3</td>
+</tr>
+<tr>
+<td>QoE, <br> Power Scheduling, <br> Resource Allocation</td>
+<td>Mongaillard et al. [131]</td>
+<td>LLaMA 3,<br> GPT-4,<br> Gemini 1.5</td>
+</tr>
+</tbody>
+</table>
+<p>References are w.r.t. <a class="reference external" href="https://www.mdpi.com/1999-5903/16/10/365">Large Language Models Meet Next-Generation Networking
+Technologies: A Review</a>.</p>
+</section>
+<section id="network-implementation">
+<h4>Network Implementation<a class="headerlink" href="#network-implementation" title="Link to this heading"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Subtasks</th>
+<th>Work</th>
+<th>Baseline Model(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Router Configuration</td>
+<td>VPP [135]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Configuration Validation</td>
+<td>Ciri [136]</td>
+<td>GPT-4,<br> GPT-3.5,<br> Claude 3,<br> Code Llama,<br> DeepSeek</td>
+</tr>
+<tr>
+<td>Network Configuration</td>
+<td>NETBUDDY [137]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Intent-Based Networking,<br> Virtual Network Function,<br> Network Policy</td>
+<td>Emergence [138]</td>
+<td>GPT-4,<br> GPT-3.5</td>
+</tr>
+<tr>
+<td>Federated Learning</td>
+<td>GPT-FL [139]</td>
+<td>GPT-3</td>
+</tr>
+<tr>
+<td>Federated Learning</td>
+<td>LP-FL [140]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Cybersecurity, Network Protocol</td>
+<td>ChatAFL [141]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Network Configuration,<br> Intent-Based Networking,<br> Next Generation Network,<br> Network Service Descriptor</td>
+<td>Mekrache et al. [142]</td>
+<td>Code Llama</td>
+</tr>
+<tr>
+<td>Network Configuration,<br> Network Topology,<br> Intent-Based Networking</td>
+<td>GeNet [143]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Network Configuration,<br> Intent-Based Networking,<br> Network Digital Twin</td>
+<td>S-Witch [144]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Network Configuration,<br> Intent-Based Networking,<br> Next Generation Network</td>
+<td>Mekrache et al. [145]</td>
+<td>Code Llama</td>
+</tr>
+<tr>
+<td>Network Configuration,<br> Intent-Based Networking</td>
+<td>Fuad et al. [146]</td>
+<td>GPT-4,<br> GPT-3.5,<br> LLaMA 2,<br> Mistral 7B</td>
+</tr>
+</tbody>
+</table>
+<p>References are w.r.t. <a class="reference external" href="https://www.mdpi.com/1999-5903/16/10/365">Large Language Models Meet Next-Generation Networking
+Technologies: A Review</a>.</p>
+</section>
+<section id="network-analytics">
+<h4>Network Analytics<a class="headerlink" href="#network-analytics" title="Link to this heading"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Subtasks</th>
+<th>Work</th>
+<th>Baseline Model(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Networking Text Classification and <br> Networking Information Retrieval</td>
+<td>NetBERT [147]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Log Analysis,<br> Intrusion Detection</td>
+<td>GPT-2C [148]</td>
+<td>GPT-2</td>
+</tr>
+<tr>
+<td>Network Dynamics,<br> Network Traffic</td>
+<td>NTT [149]</td>
+<td>Vanilla Transformer</td>
+</tr>
+<tr>
+<td>Log Analysis,<br> Anomaly Detection</td>
+<td>LogGPT [150]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Log Analysis,<br> Anomaly Detection</td>
+<td>LAnoBERT [151]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Telecommunication,<br> Network Traffic,<br> Intent-Based Networking</td>
+<td>NetLM [152]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Log Analysis</td>
+<td>BERTOps [153]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Log Analysis,<br> Anomaly Detection</td>
+<td>LogGPT [154]</td>
+<td>GPT-2</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Vulnerability Detection</td>
+<td>Szabó et al. [155]</td>
+<td>GPT-3.5,<br> GPT-4</td>
+</tr>
+<tr>
+<td>Telecommunication</td>
+<td>Piovesan et al. [156]</td>
+<td>Phi-2</td>
+</tr>
+<tr>
+<td>Log Parsing,<br> Log Analysis</td>
+<td>LILAC [157]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Network Data Analytic Function,<br> Telecommunications,<br> 5G</td>
+<td>Mobile-LLaMA [158]</td>
+<td>LLaMA 2</td>
+</tr>
+</tbody>
+</table>
+<p>References are w.r.t. <a class="reference external" href="https://www.mdpi.com/1999-5903/16/10/365">Large Language Models Meet Next-Generation Networking
+Technologies: A Review</a>.</p>
+</section>
+</section>
+<section id="network-management">
+<h3>Network Management<a class="headerlink" href="#network-management" title="Link to this heading"></a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Subtasks</th>
+<th>Work</th>
+<th>Baseline Model(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cybersecurity,<br> Man-in-the-Middle Attack,<br> Internet of Things</td>
+<td>Wong et al. [159]</td>
+<td>DistilBERT</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>CyBERT [160]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Malware Detection</td>
+<td>MalBERT [161]</td>
+<td></td>
+</tr>
+<tr>
+<td>BERT Cybersecurity,<br> Cyber Threat Intelligence</td>
+<td>SecureBERT [162]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Malware Detection</td>
+<td>Demırcı et al. [163]</td>
+<td>GPT-2</td>
+</tr>
+<tr>
+<td>Network Monitoring,<br> Fully Qualified Domain Name</td>
+<td>NorBERT [164]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Network Traffic</td>
+<td>PAC-GPT [165]</td>
+<td>GPT-3</td>
+</tr>
+<tr>
+<td>Network Incident Management</td>
+<td>Hamadanian et al. [166]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Information Security,<br> Log Parsing,<br> Anomaly Detection</td>
+<td>Owl [167]</td>
+<td>Vanilla Transformer</td>
+</tr>
+<tr>
+<td>Network Lifecycle Management,<br> Network Traffic,<br> Program Synthesis</td>
+<td>Mani et al. [168]</td>
+<td>GPT-4,<br> GPT-3,<br> Text-davinci-003,<br> Google Bard</td>
+</tr>
+<tr>
+<td>QoS,<br> Telecommunication</td>
+<td>Bariah et al. [169]</td>
+<td>GPT-2,<br> BERT,<br> DistilBERT,<br> RoBERTa</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>Tann et al. [170]</td>
+<td>GPT-3.5,<br> PaLM 2,<br> Prometheus</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>Cyber Sentinel [171]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>Moskal et al. [172]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Network Protocol,<br> Man-in-the-Middle Attack</td>
+<td>Net-GPT [173]</td>
+<td>LLaMA 2,<br> DistilGPT-2</td>
+</tr>
+<tr>
+<td>Network Measurement,<br> Internet of Things</td>
+<td>Sarabi et al. [174]</td>
+<td>RoBERTa</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Anomaly Detection,<br> Intrusion Detection</td>
+<td>HuntGPT [175]</td>
+<td>GPT-3.5</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>Zhang et al. [176]</td>
+<td>GPT-2</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Network Traffic,<br> Distributed Denial of Service Attack</td>
+<td>ShieldGPT [177]</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Cyber Threat Detection,<br> Internet of Things</td>
+<td>SecurityBERT [178]</td>
+<td>BERT</td>
+</tr>
+<tr>
+<td>Network Optimization,<br> Intent-Based Networking</td>
+<td>Habib et al. [179]</td>
+<td>ALBERT</td>
+</tr>
+<tr>
+<td>Cybersecurity,<br> Distributed Denial of Service Attack</td>
+<td>DoLLM [180]</td>
+<td>LLaMA 2</td>
+</tr>
+</tbody>
+</table>
+<p>References are w.r.t. <a class="reference external" href="https://www.mdpi.com/1999-5903/16/10/365">Large Language Models Meet Next-Generation Networking
+Technologies: A Review</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Internet of Agents Collective.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
