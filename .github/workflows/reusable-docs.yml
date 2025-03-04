@@ -88,7 +88,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git checkout -b gh-pages
-          git add ./.build/docs/html
+          git add -f ./.build/docs/html
           git commit -m "docs: update documentation site to ${{ inputs.version }}"
           git push origin gh-pages --force
 
