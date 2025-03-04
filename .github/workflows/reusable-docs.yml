@@ -91,6 +91,11 @@ jobs:
           git add -f ./.build/docs/html
           git commit -m "docs: update documentation site to ${{ inputs.version }}"
           git push origin gh-pages --force
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
   deploy:
     name: Deploy artifacts
