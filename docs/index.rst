@@ -28,3 +28,13 @@ Internet of Agents Components
    :maxdepth: 2
 
    pages/manifest
+
+.. toctree::
+   :caption: Open Agent Schema Framework
+   :maxdepth: 2
+
+   pages/data_model
+   pages/data_model_schema
+   pages/data_model_extensions
+   pages/data_model_crewai_example
+
