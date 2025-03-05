@@ -29,3 +29,12 @@ Internet of Agents Components
 
    pages/manifest
 
+.. toctree::
+   :caption: OASF
+   :maxdepth: 2
+
+   pages/oasf
+   pages/data_model
+   pages/taxonomy
+   pages/oasf_workflow
+
