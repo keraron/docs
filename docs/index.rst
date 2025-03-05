@@ -23,7 +23,7 @@ Internet of Agents Components
 
    pages/connect
 
- .. toctree::
+.. toctree::
    :caption: Manifest
    :maxdepth: 2
 
