@@ -18,6 +18,14 @@ OASF defines a set of standards for AI agent content representation that aims to
 - Ensure unique agent identification to address content discovery and consumption
 - Provide extension capabilities to enable third-party features
 
+A core component in OASF is to implement data types and core objects to
+characterize the skills of autonomous agents and facilitate announcement and
+discovery of agents with such skills in different data platforms.
+
+The current skill set taxonomy is reported in [Taxonomy of AI Agent Skills](taxonomy.md).
+
+The guidelines to upgrade and maintain OASF are reported in the [OASF Contribution Guide](oasf_workflow.md).
+
 ### Open Agentic Schema Framework Server
 
 The server/ directory contains the Open Agents Schema Framework (OASF) Schema Server source code.
