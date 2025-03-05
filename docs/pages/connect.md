@@ -2,19 +2,17 @@
 
 ## Introduction
 
-Existing Multi-Agent Systems (MAS) provide convenient ways to build Multi-Agent applications that combine various agents and enable them to communicate with each other.
+Existing Multi-Agent Systems (MAS) provide convenient ways to build Multi-Agent Applications (MAAs) that combine various agents and enable them to communicate with each other. Such communication occurs within the MAS using internal mechanisms and APIs.
 
-Such communication occurs within the MAS using internal mechanisms and APIs.
-
-Building the Internet of Agents requires agents built by different parties, potentially for different MAS and potentially running in different locations to interact. 
+Building the Internet of Agents (IoA) requires agents built by different parties, potentially for different MAS and potentially running in different locations to interact. 
 
 While interaction between co-located agents implemented through the same MAS is trivial, it is harder in case the agents are not natively compatible or in case they run in different locations.
 
-We propose a solution where all agents are able to communicate over the network using a standard protocol to interoperate. We call it the **Agent Connect Protocol**, we also interchangeably use the acronym **ACP** to refer to it.
+We propose a solution where all agents are able to communicate over the network using a standard protocol to interoperate. We call it the **Agent Connect Protocol** (**ACP**).
 
-This document describes the main requirements and design principles of ACP.
+This document describes the main requirements and design principles of the ACP.
 
-The current specification of ACP can be found [here](https://agntcy.github.io/acp-spec), ACP Software Development Kit can be found [here](https://agntcy.github.io/acp-sdk).
+The current specification of the ACP can be found [here](https://spec.acp.agntcy.org/).
 
 ## ACP Requirements
 
@@ -23,9 +21,14 @@ Agent Connect Protocol needs to formally specify the network interactions needed
 * **Authentication**: Define how caller authenticates with an agent and what its permissions are.
 * **Configuration**: Define how to configure a remote agent.
 * **Invocation**: Define how to invoke a remote agent providing input for its execution.
-* **Output retrieval and interrupt Handling**: Define how to retrieve the result of an agent invocation. Different interaction modes should be supported: synchronous, asynchronous, and streaming. This should include interrupt handling, i.e. how agents notify the caller about execution suspension to ask for additional input.
+* **Output retrieval and interrupt Handling**: Define how to retrieve the result of an agent invocation. Different interaction modes should be supported: 
+    * Synchronous
+    * Asynchronous
+    * Streaming
+    
+    This should include interrupt handling. That is, how agents notify the caller about execution suspension to ask for additional input.
 * **Capabilities and Schema definitions**: Retrieve details about the agent supported capabilities and the data structures definitions for configuration, input, and output.
-* **Error definitions**: receive error notifications with meaningful error codes and explanations.
+* **Error definitions**: Receive error notifications with meaningful error codes and explanations.
 
 
 ### Authentication and Authorization
@@ -39,79 +42,94 @@ For the reason above, ACP must define an endpoint that does not require authenti
 
 <a id="configuration"></a>
 ### Configuration
+
 Agents may support configuration. 
 
-Configuration is meant to provide parameters needed by the agent to function and/or to flavor their behavior. 
+Configuration is meant to provide parameters needed by the agent to function and to flavor their behavior.
 
-Configurations are typically valid for multiple invocations. 
+Configurations are typically valid for multiple invocations.
 
-ACP needs to define an endpoint to provide agent configuration. 
+ACP needs to define an endpoint to provide agent configuration.
 
 This endpoint must be distinct by the invocation endpoint, in this case it must return an identifier of the configured instance of the agent that can be used in multiple subsequent invocations.
 
 Invocation endpoint should also provide an option to specify the configuration. In this case the configuration is valid only for the specific invocation.
 
-Format of the configuration data structure is specified through a schema, see [Schema Definitions](#schemas)
+Format of the configuration data structure is specified through a schema. For more information, see [Schema Definitions](#schemas).
 
-Configuration endpoint may return an error. See [Error Definitions](#errors)
+Configuration endpoint may return an error. For more information, see [Error Definitions](#errors).
 
 <a id="invocation"></a>
 ### Invocation
-ACP must define an invocation endpoint that triggers one execution of an agent or resume a previously interrupted execution of an agent.
 
-Invocation endpoint must accept input as parameter. An input provides specific information and contexts for the agent to operate. Format of the input data structure is specified through a schema, see [Schema Definitions](#schemas).
+ACP must define an invocation endpoint that triggers the execution of an agent or resume a previously interrupted execution of an agent.
 
-Invocation endpoint must accept an optional configuration as parameter. When provided, this configuration is valid only for this invocation. In alternative, invocation endpoint must accept the identifier of a previously configured instance of an agent (See [Configuration](#configuration)).
+The invocation endpoint must accept the following parameters:
 
-Invocation endpoint must accept an optional callback as parameter. When provided, the output of the invocation is provided asynchronously through the provided callback (See [Output Retrieval and Interrupt Handling](#output)).
+* **Input**
 
-Invocation endpoint must accept an optional execution identifier as parameter. In this case, the agent is requested to resume a previously interrupted execution, identified by the execution identifier.
+    An input provides specific information and contexts for the agent to operate. Format of the input data structure is specified through a schema. For more information, see [Schema Definitions](#schemas).
 
-Invocation endpoint must return the output of the execution, in case it is provided synchronously.
+* **Optional configuration**
 
-Invocation endpoint must return an execution identifier, which is then used to receive asynchronous output and to resume an interrupted execution.
+    When provided, this configuration is valid only for this invocation. Alternatively, the invocation endpoint must accept the identifier of a previously configured instance of an agent. For more information, see [Configuration](#configuration).
+ 
+* **Optional callback**
+    
+    When provided, the output of the invocation is provided asynchronously through the provided callback. For more information. For more information, see [Output Retrieval and Interrupt Handling](#output).
 
-Invocation endpoint may return an error. See [Error Definitions](#errors)
+* **Optional execution identifier**
+
+    In this case, the agent is requested to resume a previously interrupted execution, identified by the execution identifier.
+
+The invocation endpoint must return the following:
+
+* The **output** of the execution, in case it is provided synchronously.
+* An **execution identifier**, which is then used to receive asynchronous output and to resume an interrupted execution.
+
+Invocation endpoint may return an error. For more information, see [Error Definitions](#errors).
 
 <a id="output"></a>
 ### Output Retrieval
+
 Once an agent is invoked, it can provide output as a result of its operations.
 
-Output can be provided to the caller synchronously, i.e. as a response of the invocation endpoint, or asynchronously, i.e. through a callback, provided as input of the invocation endpoint.
+Output can be provided to the caller synchronously (as a response of the invocation endpoint) or asynchronously (through a callback provided as input of the invocation endpoint).
 
-Output can be provided when different conditions occur:
-1. The agent has terminated its execution and provides the final result of the execution.
-2. The agent has interrupted its execution because it needs additional input, e.g. approval, chat interaction etc.
-3. The agent is still running but it provides partial results, i.e. streaming
+Output can be provided when the following conditions occur:
+* The agent has terminated its execution and provides the final result of the execution.
+* The agent has interrupted its execution because it needs additional input. For example approval or chat interaction.
+* The agent is still running but it provides partial results, that is, streaming.
 
 Output must carry information about which condition occurred.
 
-Format of the output data structure is specified through a schema, see [Schema Definitions](#schemas).
+Format of the output data structure is specified through a schema. For more information, see [Schema Definitions](#schemas).
 
 <a id="schemas"></a>
-### Capabilities and Schema definitions
+### Capabilities and Schema Definitions
 
-ACP does not mandate the format of the data structures used to carry information to and from an agent, but it allows agents to provide definitions of those formats through ACP.
-ACP must define an endpoint that provides schema definitions for configuration, input, and output.
+The ACP does not mandate the format of the data structures used to carry information to and from an agent but it allows agents to provide definitions of those formats through the ACP.
+The ACP must define an endpoint that provides schema definitions for configuration, input, and output.
 
-Different agents may implement different parts of the protocol, for example: an agent may support streaming, while another may only support full responses; an agent may support threads while another may not.
+Different agents may implement different parts of the protocol. For example: an agent may support streaming, while another may only support full responses. An agent may support threads while another may not.
 
-ACP must define and endpoint that provides details about the specific capabilities that the agent supports.
+The ACP must define and endpoint that provides details about the specific capabilities that the agent supports.
 
-Schemas, agent capabilities and other essential information that describe an agent are also needed in what we call the [Agent Manifest](manifest.md). For this reason, ACP exposes an endpoint that serves the Agent Manifest. 
+Schemas, agent capabilities, and other essential information that describe an agent are also needed in what we call the [Agent Manifest](manifest.md). For this reason, ACP exposes an endpoint that serves the Agent Manifest. 
 
 <a id="errors"></a>
 ### Error Definitions
-Each of the operations offered by ACP can produce an error. 
 
-Errors can be provided synchronously by each of the invoked endpoints, or asynchronously when they occur during an execution that supports asynchronous output.
+Each of the operations offered by the ACP can produce an error. 
 
-ACP must define errors for the most common error conditions. Each definition must include:
-* Error code
-* Description of the error condition
-* A flag that says if the error is transient or permanent
+Errors can be provided synchronously by each of the invoked endpoints or asynchronously when they occur during an execution that supports asynchronous output.
+
+The ACP must define errors for the most common error conditions. 
+
+Each definition must include the following details:
+* Error code.
+* Description of the error condition.
+* A flag that says if the error is transient or permanent.
 * An optional schema definition of additional information that the error can be associated with.
 
-ACP also allows agents to provide definitions of errors specific for that agent. For this purpose, ACP must define an endpoint that provides schema definitions for all agent specific error that are not included in the ACP specification.
-
-
+The ACP also allows agents to provide definitions of errors specific for that agent. For this purpose, the ACP must define an endpoint that provides schema definitions for all agent specific errors that are not included in the ACP specification.
