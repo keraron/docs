@@ -17,12 +17,17 @@ Internet of Agents Components
 
    pages/introduction
 
-
 .. toctree::
    :caption: Agent Connect Protocol
    :maxdepth: 2
 
    pages/connect
+
+ .. toctree::
+   :caption: Manifest
+   :maxdepth: 2
+
+   pages/manifest
 
 .. toctree::
    :caption: Open Agent Schema Framework
@@ -32,3 +37,4 @@ Internet of Agents Components
    pages/data_model_schema
    pages/data_model_extensions
    pages/data_model_crewai_example
+
