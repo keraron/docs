@@ -24,7 +24,7 @@ Internet of Agents Components
    pages/connect
 
 .. toctree::
-   :caption: Manifest
+   :caption: Agent Manifest
    :maxdepth: 2
 
    pages/manifest
