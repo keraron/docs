@@ -24,10 +24,10 @@ copyright = "2025, Internet of Agents Collective"
 author = "IoA Collective"
 
 # The short X.Y version
-version = os.environ.get("VERSION", "v0.1")
+version = os.environ.get("VERSION", "v0.0.1")
 
 # The full version, including alpha/beta/rc tags
-release = os.environ.get("VERSION", "v0.1.0")
+release = os.environ.get("VERSION", "v0.0.1")
 
 
 # -- General configuration ---------------------------------------------------
