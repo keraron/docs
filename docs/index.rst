@@ -18,6 +18,11 @@ Internet of Agents Components
    pages/introduction
 
 .. toctree::
+   :caption: Agent Directory Service
+
+   pages/dir
+
+.. toctree::
    :caption: Agent Connect Protocol
    :maxdepth: 2
 
