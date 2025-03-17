@@ -5,7 +5,7 @@ contribute to the development of OASF Schemas and the framework itself.
 
 * * *
 
-### Terminology
+## Terminology
 
 1. **Field**: A field is a unique identifier name for a piece of data contained in OASF. Each field also designates a corresponding data_type.
 2. **Object**: An object is a collection of contextually related fields and other objects.  It is also a data_type in OASF.
