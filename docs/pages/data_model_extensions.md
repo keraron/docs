@@ -1,13 +1,14 @@
 # Extensions
 
-Extensions provide additional descriptors to the AI agent data model with the goal to:
+Extensions add descriptors to the AI agent data model with the goal to:
 
-- Enrich the data model generically based on given requirements
-- Provide a way for the community to extend the data model schema
-- Enable data model consumers/services to provide custom functionalities
+- Enrich the data model generically based on given requirements.
+- Allow the community to extend the data model schema.
+- Enable data model consumers and services to provide custom functionalities.
 
 Each extension is described using its `name` and its respective `version` fields, with FQDN specified using `{name}/{version}` value.
-These values can be used by content consumers to identify specific extensions in order to perform custom operations.
+
+These values allow content consumers to identify specific extensions in order to perform custom operations.
 
 ## Usage
 
