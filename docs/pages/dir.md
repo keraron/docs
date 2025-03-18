@@ -1,174 +1,72 @@
 # Agent Directory Architecture
 
-ADS is a distributed directory service designed to store metadata for AI agent
-applications. This metadata, in the form of directory records, can be used to
-discover agent applications that implement specific skills to solve various
-problems.
+ADS (Agent Directory Service) is a distributed directory service designed to
+store metadata for AI agent applications. This metadata, stored as directory
+records, enables the discovery of agent applications with specific skills for
+solving various problems.
 
-The current implementation supports distributed directories that can
-interconnect via a content-routing protocol. This protocol maps announced skills
-to directory record identifiers and provides a list of directory servers that
-are currently storing those records.
+The implementation features distributed directories that interconnect through a
+content-routing protocol. This protocol maps agent skills to directory record
+identifiers and maintains a list of directory servers currently hosting those
+records.
 
-A directory record must include announced skills that belong to a skill
-taxonomy, as defined in the [Taxonomy of AI Agent Skills](taxonomy.md) from
-[OASF](oasf.md).
+Each directory record must include skills from a defined taxonomy, as specified
+in the [Taxonomy of AI Agent Skills](taxonomy.md) from [OASF](oasf.md).
 
-All data in a record is modeled using [OASF](oasf.md), but only skills are used
-to implement content routing in the distributed network of directory servers.
+Directory records are identified by globally unique names that are routable
+within a DHT (Distributed Hash Table) to locate peer directory servers.
+Similarly, the skill taxonomy is routable in the DHT to map skillsets to records
+that announce those skills.
 
-The ADS specification is a work in progress and is published as an Internet
-Draft in the [ADS Spec](https://spec.dir.agntcy.org). The sources are available
-in the [ADS Spec sources](https://github.com/agntcy).
+While all record data is modeled using [OASF](oasf.md), only skills are
+leveraged for content routing in the distributed network of directory servers.
 
-The current reference implementation is written in Go and implements server and
-client nodes with interfaces based on gRPC and protocol buffers. The directory record
-store is based on [ORAS](https://oras.land) (OCI registry as storage), and
-data distribution is implemented using the [zot](https://zotregistry.dev) OCI
-server implementation.
+The ADS specification is under active development and is published as an
+Internet Draft at [ADS Spec](https://spec.dir.agntcy.org). The source code is
+available in the [ADS Spec sources](https://github.com/agntcy).
 
-Content-routing is implemented using a Kedemlia DHT using the go implementation
-of the [libp2p](https://libp2p.io) project.
+The current reference implementation, written in Go, provides server and client
+nodes with gRPC and protocol buffer interfaces. The directory record storage is
+built on [ORAS](https://oras.land) (OCI Registry As Storage), while data
+distribution uses the [zot](https://zotregistry.dev) OCI server implementation.
 
-# Reference Implementation
+```mermaid
+graph TB
+    subgraph "Agent Directory Service"
+        DHT[Distributed Hash Table]
+        ADS[Directory Servers]
+        ORAS[ORAS Storage]
+        ZOT[Zot Server]
+    end
 
-## Features
+    subgraph "Components"
+        Records[Directory Records]
+        Skills[Skills Taxonomy]
+        Clients[Client Nodes]
+    end
 
-- _Standards_ - Defines standard schema for data representation and exchange.
-- _Dev Kit_ - Tooling to facilitate API interaction and generation of agent data models from different sources.
-- _Plugins_ - Supports model schema and build plugins to enrich agent data models for custom use-cases.
-- _Announce_ - Enables publication of records to the network.
-- _Discover_ - Listen and retreive records published on the network.
-- _Search_ - Supports searching of records across the network that satisfy given attributes and constraints.
-- _Security_ - Relies on well-known security principles to provide data provenance, integrity and ownership.
+    subgraph "Interfaces"
+        GRPC[gRPC API]
+        Proto[Protocol Buffers]
+    end
 
-**NOTE**: This is an alpha version, some features may be missing and breaking changes are expected.
+    %% Connections
+    Clients -->|Query| GRPC
+    GRPC -->|Interface| ADS
+    ADS -->|Store| ORAS
+    ADS -->|Distribute| ZOT
+    ADS -->|Route| DHT
+    Records -->|Contains| Skills
+    DHT -->|Maps| Skills
+    DHT -->|Locates| Records
 
-## Source tree
+%% Styling
+    classDef primary stroke:#333,stroke-width:2px
+    classDef secondary stroke:#333,stroke-width:2px
+    classDef interface stroke:#333,stroke-width:2px
 
-Main software components:
+    class ADS,DHT primary
+    class Records,Skills,ORAS,ZOT secondary
+    class GRPC,Proto interface
 
-- [api](./api) - gRPC specification for models and services
-- [cli](./cli) - command line tooling for interacting with services
-- [cli/builder/plugins](./cli/builder/plugins) - schema specification and tooling for model plugins
-- [client](./client) - client SDK tooling for interacting with services
-- [e2e](./e2e) - end-to-end testing framework
-- [server](./server) - node implementation for distributed services that provide storage and networking capabilities
-
-## Prerequisites
-
-- [Taskfile](https://taskfile.dev/)
-- [Docker](https://www.docker.com/)
-- Golang
-
-## Artifacts distribution
-
-### Golang Packages
-
-See [API package](https://pkg.go.dev/github.com/agntcy/dir/api), [Server package](https://pkg.go.dev/github.com/agntcy/dir/server) and [CLI package](https://pkg.go.dev/github.com/agntcy/dir/cli).
-
-### Binaries
-
-See https://github.com/agntcy/dir/releases
-
-### Container images
-
-```bash
-docker pull ghcr.io/agntcy/dir-ctl:latest
-docker pull ghcr.io/agntcy/dir-apiserver:latest
 ```
-
-### Helm charts
-
-```bash
-helm pull ghcr.io/agntcy/dir/helm-charts/dir:latest
-```
-
-## Development
-
-Use `Taskfile` for all related development operations such as testing, validating, deploying, and working with the project.
-
-To execute the test suite locally, run:
-
-```bash
-task gen
-task build
-task test:e2e
-```
-
-## Deployment
-
-To deploy the Directory, you can use the provided `Taskfile` commands to start the necessary services and deploy the Directory server. Alternatively, you can deploy from a GitHub Helm chart release.
-
-### Local Deployment
-
-To start a local OCI registry server for storage and the Directory server, use the following commands:
-
-```bash
-task server:store:start
-task server:start
-```
-
-These commands will set up a local environment for development and testing purposes.
-
-### Remote Deployment
-
-To deploy the Directory into an existing Kubernetes cluster, use a released Helm chart from GitHub with the following commands:
-
-```bash
-helm pull oci://ghcr.io/agntcy/dir/helm-charts/dir --version v0.1.3
-helm upgrade --install dir oci://ghcr.io/agntcy/dir/helm-charts/dir --version v0.1.3
-```
-
-These commands will pull the latest version of the Directory Helm chart from the GitHub Container Registry and install or upgrade the Directory in your Kubernetes cluster. Ensure that your Kubernetes cluster is properly configured and accessible before running these commands. The `helm upgrade --install` command will either upgrade an existing release or install a new release if it does not exist.
-
-## Usage
-
-The Directory CLI provides `build`, `push`, and `pull` commands to interact with the Directory server. Below are the details on how to run each command.
-
-To run these commands, you can either:
-* Download a released CLI binary with `curl -L -o dirctl https://github.com/agntcy/dir/releases/download/<release tag>/dirctl-$(uname | tr '[:upper:]' '[:lower:]')-$(uname -m)`
-* Use a binary compiled from source with `task cli:compile`
-* Use CLI module from source by navigating to the `cli` directory and running `go run cli.go <command> <args>`
-
-### Build Command
-
-The `build` command is used to compile and build the agent data model.
-
-Usage:
-```bash
-dirctl build [options]
-```
-
-Options:
-- `--config-file` : Path to the agent build configuration file. Please note that other flags will override the build configuration from the file. Supported formats: YAML. Example template: cli/build.config.yaml.
-
-### Push Command
-
-The `push` command is used to publish the built agent data model to the store. The input data model should be JSON formatted.
-
-Usage:
-```bash
-dirctl push [options]
-```
-
-Options:
-- `--from-file` : Read compiled data from JSON file, reads from STDIN if empty.
-- `--server-addr`: Directory Server API address (default "0.0.0.0:8888")
-
-Example usage with read from STDIN: `dirctl build <args> | dirctl push`.
-
-### Pull Command
-
-The `pull` command is used to retrieve agent data model from the store. The output data model will be JSON formatted.
-
-Usage:
-```bash
-dirctl pull [options]
-```
-
-Options:
-- `--digest` : Digest of the agent to pull.
-- `--server-addr`: Directory Server API address (default "0.0.0.0:8888")
-
-Example usage in combination with other commands: `dirctl pull --digest $(dirctl build | dirctl push)`.
