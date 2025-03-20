@@ -8,5 +8,6 @@ evaluation. This framework ensures that AI agents operate effectively and
 responsibly, improving over time through learning, while maintaining ethical
 standards and safety protocols. By integrating these elements, AI agents can
 provide significant value in various applications, adapting to changing
-conditions and user needs. 
+conditions and user needs.
+
 Below are specification of currently supported AI agentic frameworks.
