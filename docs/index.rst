@@ -49,10 +49,11 @@ Internet of Agents Components
    :maxdepth: 2
 
    pages/toolkit/api_bridge_agent
-   pages/toolkit/io-mapper
+   pages/toolkit/io_mapper
 
 .. toctree::
    :caption: Agent Workflow Server
    :maxdepth: 2
 
-   pages/workflow-server
+   pages/workflow_server
+   pages/workflow_server_manager
