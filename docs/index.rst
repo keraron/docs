@@ -28,6 +28,7 @@ Internet of Agents Components
    :maxdepth: 2
 
    pages/connect
+   pages/agntcy_acp_sdk
 
 .. toctree::
    :caption: Agent Manifest
