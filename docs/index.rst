@@ -44,10 +44,8 @@ Internet of Agents Components
    pages/taxonomy
    pages/oasf_workflow
 
-..
-  Uncomment this when ready to publish
-  .. toctree::
-     :caption: Multi-Agent Software Toolkit
-     :maxdepth: 2
+.. toctree::
+   :caption: Multi-Agent Software Toolkit
+   :maxdepth: 2
 
-     pages/toolkit/api_bridge_agent
+   pages/toolkit/api_bridge_agent
