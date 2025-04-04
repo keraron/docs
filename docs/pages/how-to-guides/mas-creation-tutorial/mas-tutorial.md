@@ -1,4 +1,4 @@
-# ACP Multi Agent Software Quickstart
+# Sample Multi Agent Software - Step by Step Tutorial
 
 This guide will help you transform a simple [LangGraph application](https://langchain-ai.github.io/langgraph/tutorials/introduction/#part-1-build-a-basic-chatbot) into a robust multi-agent software, which uses the [Agent Connect Protocol (ACP)](https://docs.agntcy.org/pages/syntactic_sdk/connect.html) to allow communication between distributed agents. These agents run on a [Workflow Server](https://docs.agntcy.org/pages/agws/workflow_server.html), where they are deployed and executed remotely. To make the explanation clearer, we provide a [marketing campaign manager example](https://github.com/agntcy/acp-sdk/tree/main/examples/marketing-campaign) that demonstrates how to integrate the capabilities of different agents into a unified application.
 
@@ -40,7 +40,7 @@ Begin by setting up a **simple LangGraph** skeleton application with the followi
 *Start, Mail Composer, Email Reviewer, Send Mail, and End*
 
 
-![Skeleton LangGraph Application](./marketing_campaign_skeleton.png)
+![Skeleton LangGraph Application](./_static/marketing_campaign_skeleton.png)
 
 This setup is a basic framework with **placeholders for each task** in the workflow. It sets the stage for **transforming** these nodes into remote **ACP nodes**, allowing the interaction with **real remote agents**.
 
@@ -407,7 +407,7 @@ add_io_mapped_conditional_edge(
 
 Below is the final graph that represents the **complete process** of composing, reviewing, and sending an email. This graph shows how agents are connected, how inputs and outputs are processed, and how the application adapts dynamically based on user interactions.
 
-![Final LangGraph Application](./marketing_campaign_final.png)
+![Final LangGraph Application](./_static/marketing_campaign_final.png)
 
 The MAS begins with the `process_inputs` node and transitions to the `mailcomposer` node, where the email draft is created. A **conditional edge** allows the user to interact with the `mailcomposer` until they are satisfied with the composed email. Once confirmed, the workflow proceeds through the following nodes in sequence:
 
