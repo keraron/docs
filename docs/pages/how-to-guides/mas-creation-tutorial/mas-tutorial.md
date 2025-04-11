@@ -1,13 +1,22 @@
-# Sample Multi Agent Software - Step by Step Tutorial
+# Getting started with AGNTCY compoenents: build your first app
 
-This guide will help you transform a simple [LangGraph application](https://langchain-ai.github.io/langgraph/tutorials/introduction/#part-1-build-a-basic-chatbot) into a robust multi-agent software, which uses the [Agent Connect Protocol (ACP)](https://docs.agntcy.org/pages/syntactic_sdk/connect.html) to allow communication between distributed agents. These agents run on a [Workflow Server](https://docs.agntcy.org/pages/agws/workflow_server.html), where they are deployed and executed remotely. To make the explanation clearer, we provide a [marketing campaign manager example](https://github.com/agntcy/acp-sdk/tree/main/examples/marketing-campaign) that demonstrates how to integrate the capabilities of different agents into a unified application.
+This tutorial guides you through the process of building a distributed multi-agent application using [LangGraph](https://www.langchain.com/langgraph) and leveraging [Agent Connect Protocol (ACP)](https://docs.agntcy.org/pages/syntactic_sdk/connect.html) and other **AGNTCY** components and tools.
+
+The sample app used for this tutorial is a **Marketing Campaign Manager** agent. A "pre-cooked" version of this application is available [here](https://github.com/agntcy/acp-sdk/tree/main/examples/marketing-campaign).
+
+
+> For this tutorial we are using Langgraph, but other frameworks can also be used.
 
 
 ## Overview
+The **Marketing Campaign Manager** we are building implements a Langgraph graph which:
+* Interact with a user to gather the description of the email marketing campaign they wants to launch.
+* Uses an already existing [Mail Composer Agent](https://github.com/agntcy/acp-sdk/tree/main/examples/mailcomposer), capable of compose emails for the marketing campaign. This agent is written using Langgraph, it provides a Agent Manifest which allows to deploy it through the Agent Workflow Server and be consumed through ACP.
+* Uses an already existing [Email Reviewer Agent](https://github.com/agntcy/acp-sdk/tree/main/examples/email_reviewer) capable of revieving an email and adjust it for a specific target audience. This agent is written using [LlamaIndex](https://www.llamaindex.ai/framework) and simirarly to the previous agent, it provides a Agent Manifest which allows to deploy it through the [Agent Workflow Server](https://docs.agntcy.org/pages/agws/workflow_server.html) and be consumed through ACP.
+* Uses [Twilio Sendgrid](https://sendgrid.com/) API to deliver the marketing campaign email to the intended recipient. We will consume this API leveraging the capabilities of the [API Bridge Agent](https://docs.agntcy.org/pages/syntactic_sdk/api_bridge_agent.html).
 
-In this tutorial, we assume you **already know the agents you wish to integrate into your system**. For our example, these are the [Mail Composer](https://github.com/agntcy/acp-sdk/tree/main/examples/mailcomposer) and [Email Reviewer](https://github.com/agntcy/acp-sdk/tree/main/examples/email_reviewer) agents. You should have **access to their manifests**, which are fundamental for **generating** the necessary **data types** and structures for integration.
 
-This tutorial is structured to guide you through the following key steps:
+This tutorial is structured in the following steps:
 
 1. [Create a Basic LangGraph Skeleton Application](#step-1-create-a-basic-langgraph-skeleton-application): Set up a LangGraph application structure to serve as the base of your multi-agent software.
 
