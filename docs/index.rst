@@ -33,6 +33,7 @@ Internet of Agents Components
 
    pages/dir
    pages/dir-howto
+   pages/hub
 
 .. toctree::
    :caption: Agent Manifest
