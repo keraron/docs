@@ -1,6 +1,6 @@
 # Security Layer
 
-The Security Layer implements secure group communications using the Message Layer Security (MLS) protocol. This layer ensures end-to-end encryption, authentication, and access control across agent groups within the AGP ecosystem.
+The Security Layer implements secure group communications using the Message Layer Security (MLS) protocol. This layer ensures end-to-end encryption, authentication, and access control across agent groups within the SLIM ecosystem.
 
 ## Overview
 

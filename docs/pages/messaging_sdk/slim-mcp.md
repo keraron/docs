@@ -1,42 +1,42 @@
-# AGP-MCP
+# SLIM-MCP
 
-This tutorial demonstrates how to use AGP (Agent Gateway Protocol) to transport
-MCP (Model Context Protocol) messages. AGP offers two primary integration
+This tutorial demonstrates how to use SLIM (Secure Low-Latency Interactive Messaging) to transport
+MCP (Model Context Protocol) messages. SLIM offers two primary integration
 options, depending on whether you're building a new system or integrating with
 an existing MCP server:
 
-1. **Using AGP as an MCP Custom Transport Protocol**: MCP is designed to support
-   multiple transport protocols, with AGP now available as one of these options.
-   To implement AGP as a custom transport, you can install the AGP-MCP package
+1. **Using SLIM as an MCP Custom Transport Protocol**: MCP is designed to support
+   multiple transport protocols, with SLIM now available as one of these options.
+   To implement SLIM as a custom transport, you can install the SLIM-MCP package
    through pip and integrate it directly into your application. This approach is
    ideal for new systems where you control both client and server components,
-   providing native AGP support for efficient MCP message transport.
+   providing native SLIM support for efficient MCP message transport.
 
-2. **Using AGP with a Proxy Server**: If you have an existing MCP server running
-   that uses SSE (Server-Sent Events) for transport, you can integrate AGP by
-   deploying a proxy server. This proxy handles translation between AGP clients
-   and your SSE-based MCP server, allowing AGP clients to connect seamlessly
+2. **Using SLIM with a Proxy Server**: If you have an existing MCP server running
+   that uses SSE (Server-Sent Events) for transport, you can integrate SLIM by
+   deploying a proxy server. This proxy handles translation between SLIM clients
+   and your SSE-based MCP server, allowing SLIM clients to connect seamlessly
    without requiring modifications to your existing server, making it an
    effective solution for established systems.
 
 This tutorial guides you through both integration methods. You'll learn how to
-use AGP as a custom transport for MCP and how to configure the proxy server to
-enable AGP support for an SSE-based MCP server. By the end, you'll have all the
-necessary tools to integrate AGP with MCP in a way that best fits your system's
+use SLIM as a custom transport for MCP and how to configure the proxy server to
+enable SLIM support for an SSE-based MCP server. By the end, you'll have all the
+necessary tools to integrate SLIM with MCP in a way that best fits your system's
 architecture.
 
-## Using AGP as an MCP Custom Transport Protocol
+## Using SLIM as an MCP Custom Transport Protocol
 
 In this section of the tutorial, we implement and deploy two sample
 applications:
 
  - A [LlamaIndex
-   agent](https://github.com/agntcy/agp/tree/main/data-plane/integrations/mcp/agp-mcp/examples/llamaindex-time-agent)
-   that communicates with an MCP server over AGP to perform time queries and
+   agent](https://github.com/agntcy/slim/tree/main/data-plane/integrations/mcp/slim-mcp/examples/llamaindex-time-agent)
+   that communicates with an MCP server over SLIM to perform time queries and
    timezone conversions.
  - An [MCP time
-   server](https://github.com/agntcy/agp/tree/main/data-plane/integrations/mcp/agp-mcp/examples/mcp-server-time)
-   that implements AGP as its transport protocol and processes requests from the
+   server](https://github.com/agntcy/slim/tree/main/data-plane/integrations/mcp/slim-mcp/examples/mcp-server-time)
+   that implements SLIM as its transport protocol and processes requests from the
    LlamaIndex agent.
 
 ### Prerequisites
@@ -44,14 +44,14 @@ applications:
 - [UV](https://docs.astral.sh/uv/getting-started/installation/) - A Python
   package installer and environment manager.
 - [Docker](https://docs.docker.com/get-started/get-docker/) - For running the
-  AGP instance.
+  SLIM instance.
 
-### Setting Up the AGP Instance
+### Setting Up the SLIM Instance
 
-Since the client and server communicate using AGP, we first need to deploy
-an AGP instance. We are using a pre-built Docker image for this purpose.
+Since the client and server communicate using SLIM, we first need to deploy
+a SLIM instance. We are using a pre-built Docker image for this purpose.
 
-First, execute the following command to create a configuration file for AGP:
+First, execute the following command to create a configuration file for SLIM:
 
 ```bash
 cat << EOF > ./config.yaml
@@ -62,11 +62,11 @@ tracing:
 
 runtime:
   n_cores: 0
-  thread_name: "data-plane-gateway"
+  thread_name: "slim-data-plane"
   drain_timeout: 10s
 
 services:
-  gateway/0:
+  slim/0:
     pubsub:
       servers:
         - endpoint: "0.0.0.0:46357"
@@ -82,22 +82,22 @@ services:
 EOF
 ```
 
-Now launch the AGP instance using the just created configuration file:
+Now launch the SLIM instance using the just created configuration file:
 
 ```bash
 docker run -it \
     -v ./config.yaml:/config.yaml -p 46357:46357 \
-    ghcr.io/agntcy/agp/gw:latest /gateway --config /config.yaml
+    ghcr.io/agntcy/slim:latest /slim --config /config.yaml
 ```
 
-This command deploys an AGP instance that listens on port 46357 for incoming
+This command deploys an SLIM instance that listens on port 46357 for incoming
 connections. This instance serves as the communication backbone between our
 client and server applications.
 
 ### Implementing the MCP Server
 
 Next, we'll implement a simple MCP server that processes requests from the
-LlamaIndex agent. This server demonstrates how to use AGP as a custom
+LlamaIndex agent. This server demonstrates how to use SLIM as a custom
 transport protocol.
 
 First, create a new directory for our MCP server project:
@@ -117,7 +117,7 @@ name = "mcp-server-time"
 version = "0.1.0"
 description = "MCP server providing tools for time queries and timezone conversions"
 requires-python = ">=3.10"
-dependencies = ["mcp==1.6.0", "agp-mcp==0.1.3", "click>=8.1.8"]
+dependencies = ["mcp==1.6.0", "slim-mcp>=0.1.0", "click>=8.1.8"]
 
 [project.scripts]
 mcp-server-time = "mcp_server_time:main"
@@ -130,7 +130,7 @@ build-backend = "hatchling.build"
 Next, let's implement the MCP server that handles time queries and timezone
 conversions. This implementation is based on the [official MCP example
 server](https://github.com/modelcontextprotocol/servers/tree/main/src/time),
-modified to support both AGP and SSE as transport protocols.
+modified to support both SLIM and SSE as transport protocols.
 
 Create the following files in your project directory:
 
@@ -181,7 +181,7 @@ from mcp.server.lowlevel import Server
 from mcp.shared.exceptions import McpError
 from pydantic import BaseModel
 
-from agp_mcp import AGPServer, init_tracing
+from slim_mcp import SLIMServer, init_tracing
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -475,17 +475,17 @@ class TimeServerApp:
             except Exception as e:
                 raise ValueError(f"Error processing mcp-server-time query: {str(e)}")
 
-    async def handle_session(self, session, agp_server, tasks):
+    async def handle_session(self, session, slim_server, tasks):
         """
         Handle a single session with proper error handling and logging.
 
         Args:
             session: The session to handle
-            agp_server: The AGP server instance
+            slim_server: The SLIM server instance
             tasks: Set of active tasks
         """
         try:
-            async with agp_server.new_streams(session) as streams:
+            async with slim_server.new_streams(session) as streams:
                 logger.info(
                     f"new session started - session_id: {session.id}, active_sessions: {len(tasks)}"
                 )
@@ -525,7 +525,7 @@ async def cleanup_tasks(tasks):
             raise
 
 
-async def serve_agp(
+async def serve_slim(
     local_timezone: str | None = None,
     organization: str = "org",
     namespace: str = "ns",
@@ -533,7 +533,7 @@ async def serve_agp(
     config: dict = {},
 ) -> None:
     """
-    Main server function that initializes and runs the time server using AGP transport.
+    Main server function that initializes and runs the time server using SLIM transport.
 
     Args:
         local_timezone: Optional override for local timezone
@@ -546,11 +546,11 @@ async def serve_agp(
     time_app = TimeServerApp(local_timezone)
     tasks: set[asyncio.Task] = set()
 
-    async with AGPServer(config, organization, namespace, mcp_server) as agp_server:
+    async with SLIMServer(config, organization, namespace, mcp_server) as slim_server:
         try:
-            async for new_session in agp_server:
+            async for new_session in slim_server:
                 task = asyncio.create_task(
-                    time_app.handle_session(new_session, agp_server, tasks)
+                    time_app.handle_session(new_session, slim_server, tasks)
                 )
                 tasks.add(task)
         except Exception:
@@ -621,7 +621,7 @@ class DictParamType(click.ParamType):
 @click.option(
     "--local-timezone", type=str, help="Override local timezone", default=None
 )
-@click.option("--transport", default="agp", help="transport option: agp or sse")
+@click.option("--transport", default="slim", help="transport option: slim or sse")
 @click.option(
     "--port",
     default="8000",
@@ -631,15 +631,15 @@ class DictParamType(click.ParamType):
 @click.option(
     "--organization",
     default="org",
-    help="server organization, used only with agp transport",
+    help="server organization, used only with slim transport",
 )
 @click.option(
-    "--namespace", default="ns", help="server namespace, used only with agp transport"
+    "--namespace", default="ns", help="server namespace, used only with slim transport"
 )
 @click.option(
     "--mcp-server",
     default="time-server",
-    help="server name, used only with agp transport",
+    help="server name, used only with slim transport",
 )
 @click.option(
     "--config",
@@ -650,18 +650,18 @@ class DictParamType(click.ParamType):
         },
     },
     type=DictParamType(),
-    help="agp server configuration, used only with agp transport",
+    help="slim server configuration, used only with slim transport",
 )
 def main(local_timezone, transport, port, organization, namespace, mcp_server, config):
     """
     MCP Time Server - Time and timezone conversion functionality for MCP.
     """
 
-    if transport == "agp":
+    if transport == "slim":
         import asyncio
 
         asyncio.run(
-            serve_agp(local_timezone, organization, namespace, mcp_server, config)
+            serve_slim(local_timezone, organization, namespace, mcp_server, config)
         )
     else:
         serve_sse(local_timezone, port)
@@ -671,16 +671,16 @@ def main(local_timezone, transport, port, organization, namespace, mcp_server, c
 
 <br>
 
-The core component of the server implementation is the `serve_agp` function.
-This function establishes a connection with our AGP instance and handles all
-incoming client sessions. It leverages the `AGPServer` class to create an AGP
+The core component of the server implementation is the `serve_slim` function.
+This function establishes a connection with our SLIM instance and handles all
+incoming client sessions. It leverages the `SLIMServer` class to create a SLIM
 server instance that listens for and processes client connections.
 
-External clients can address this server using the AGP name
+External clients can address this server using the SLIM name
 `org/ns/time-server`.
 
 ```python
-async def serve_agp(
+async def serve_slim(
     local_timezone: str | None = None,
     organization: str = "org",
     namespace: str = "ns",
@@ -688,7 +688,7 @@ async def serve_agp(
     config: dict = {},
 ) -> None:
     """
-    Main server function that initializes and runs the time server using AGP transport.
+    Main server function that initializes and runs the time server using SLIM transport.
 
     Args:
         local_timezone: Optional override for local timezone
@@ -701,11 +701,11 @@ async def serve_agp(
     time_app = TimeServerApp(local_timezone)
     tasks: set[asyncio.Task] = set()
 
-    async with AGPServer(config, organization, namespace, mcp_server) as agp_server:
+    async with SLIMServer(config, organization, namespace, mcp_server) as slim_server:
         try:
-            async for new_session in agp_server:
+            async for new_session in slim_server:
                 task = asyncio.create_task(
-                    time_app.handle_session(new_session, agp_server, tasks)
+                    time_app.handle_session(new_session, slim_server, tasks)
                 )
                 tasks.add(task)
         except Exception:
@@ -738,7 +738,7 @@ uv run mcp-server-time --local-timezone Europe/London
 ### Implementing the LlamaIndex Agent
 With our MCP server up and running, let's implement a LlamaIndex agent that
 will interact with the server. This agent will send time queries and timezone
-conversion requests to our MCP server using the AGP transport protocol.
+conversion requests to our MCP server using the SLIM transport protocol.
 
 First, create a new directory for our LlamaIndex agent project:
 
@@ -755,11 +755,11 @@ Next, create a `pyproject.toml` file to define the agent's dependencies:
 [project]
 name = "llamaindex-time-agent"
 version = "0.1.0"
-description = "A llamaindex agent using MCP server over AGP for time queries"
+description = "A llamaindex agent using MCP server over SLIM for time queries"
 requires-python = ">=3.12"
 dependencies = [
     "mcp==1.6.0",
-    "agp-mcp==0.1.3",
+    "slim-mcp>=0.1.0",
     "click>=8.1.8",
     "llama-index>=0.12.29",
     "llama-index-llms-azure-openai>=0.3.2",
@@ -817,7 +817,7 @@ from llama_index.llms.azure_openai import AzureOpenAI
 from llama_index.llms.ollama import Ollama
 from llama_index.tools.mcp import McpToolSpec
 
-from agp_mcp import AGPClient
+from slim_mcp import SLIMClient
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -843,8 +843,8 @@ async def amain(
     else:
         raise Exception("LLM type must be azure or ollama")
 
-    logger.info("Starting AGP client")
-    async with AGPClient(
+    logger.info("Starting SLIM client")
+    async with SLIMClient(
         config,
         "org",
         "ns",
@@ -945,10 +945,10 @@ def main(
 The key component of the agent is the `amain` function, which handles:
 
 1. LLM configuration (Azure OpenAI or Ollama).
-2. AGP client initialization and connection to our MCP server.
+2. SLIM client initialization and connection to our MCP server.
 3. Tool setup and agent execution.
 
-The agent establishes its identity through the AGP name `org/ns/time-agent`,
+The agent establishes its identity through the SLIM name `org/ns/time-agent`,
 which is used for addressing.
 
 After implementing all the necessary files, your agent project structure should
@@ -981,27 +981,27 @@ uv run llamaindex-time-agent \
     --city 'New York'
 ```
 
-The agent connects to the MCP server through AGP, send a time query for the
+The agent connects to the MCP server through SLIM, send a time query for the
 specified city, and display the response.
 
-## Using AGP with a Proxy Server for SSE-based MCP Servers
+## Using SLIM with a Proxy Server for SSE-based MCP Servers
 
-In this section, we demonstrate how to set up and configure the AGP-MCP Proxy
-Server. This proxy enables AGP-based clients to communicate with existing MCP
+In this section, we demonstrate how to set up and configure the SLIM-MCP Proxy
+Server. This proxy enables SLIM-based clients to communicate with existing MCP
 servers that use SSE (Server-Sent Events) as their transport protocol. By
-following these steps, you'll create a bridge between AGP clients and SSE-based
+following these steps, you'll create a bridge between SLIM clients and SSE-based
 MCP servers without modifying the servers themselves.
 
-### Setting Up the AGP Node
+### Setting Up the SLIM Node
 
-First, ensure you have an AGP node running in your environment. If you haven't
+First, ensure you have a SLIM node running in your environment. If you haven't
 already set one up, follow the instructions provided in the previous section to
-[deploy an AGP instance](#setting-up-the-agp-instance).
+[deploy an SLIM instance](#setting-up-the-slim-instance).
 
 ### Running the MCP Server with SSE Transport
 
 Let's set up the time-server using the SSE transport protocol instead of
-AGP. The server implementation is the same as described in the previous section,
+SLIM. The server implementation is the same as described in the previous section,
 but we configure it to use SSE:
 
 ```bash
@@ -1019,19 +1019,19 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 At this point, your time-server is up and running with SSE transport.
 
-### Setting up the AGP-MCP Proxy
+### Setting up the SLIM-MCP Proxy
 
-To enable AGP clients to communicate with the SSE-based time-server, you'll need
-to configure and run the AGP-MCP Proxy Server. Follow these steps to set up a
+To enable SLIM clients to communicate with the SSE-based time-server, you'll need
+to configure and run the SLIM-MCP Proxy Server. Follow these steps to set up a
 local proxy instance:
 
 1. **Determine your local IP address** (works on both macOS and Linux):
    ```bash
    # For macOS
-   LOCAL_ADDRESS=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}' | head -n 1)
+   LOCAL_ADDRESS=$(ifconfig | grep --color=never "inet " | grep -v 127.0.0.1 | awk '{print $2}' | head -n 1)
 
    # For Linux
-   LOCAL_ADDRESS=$(ip addr show | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}' | cut -d/ -f1 | head -n 1)
+   LOCAL_ADDRESS=$(ip addr show | grep --color=never "inet " | grep -v 127.0.0.1 | awk '{print $2}' | cut -d/ -f1 | head -n 1)
 
    # Verify the IP was found correctly
    echo "Using local IP address: ${LOCAL_ADDRESS}"
@@ -1046,7 +1046,7 @@ local proxy instance:
 2. **Create the configuration file for the proxy**:
    ```bash
    cat << EOF > ./config-proxy.yaml
-   # AGP-MCP Proxy Configuration
+   # SLIM-MCP Proxy Configuration
 
    # Tracing settings for log visibility
    tracing:
@@ -1057,12 +1057,12 @@ local proxy instance:
    # Runtime configuration
    runtime:
      n_cores: 0
-     thread_name: "data-plane-gateway"
+     thread_name: "slim-data-plae"
      drain_timeout: 10s
 
-   # Service configuration for connecting to the AGP node
+   # Service configuration for connecting to the SLIM node
    services:
-     gateway/0:
+     slim/0:
        pubsub:
          clients:
            - endpoint: "http://${LOCAL_ADDRESS}:46357"
@@ -1075,16 +1075,16 @@ local proxy instance:
    ```bash
    docker run -it \
      -v $(pwd)/config-proxy.yaml:/config-proxy.yaml \
-     ghcr.io/agntcy/agp/mcp-proxy:latest /agp-mcp-proxy \
+     ghcr.io/agntcy/slim/mcp-proxy:latest /slim-mcp-proxy \
      --config /config-proxy.yaml \
-     --svc-name gateway/0 \
+     --svc-name slim/0 \
      --name org/mcp/proxy \
      --mcp-server http://${LOCAL_ADDRESS}:8000/sse
    ```
 
    This command:
    - Mounts your local configuration file into the container.
-   - Uses the official AGP-MCP proxy image.
+   - Uses the official SLIM-MCP proxy image.
    - Sets the service name and proxy identifier.
    - Configures the connection to your SSE-based MCP server.
 
@@ -1106,7 +1106,7 @@ uv run llamaindex-time-agent \
     --mcp-server-name "proxy"
 ```
 
-With this setup, your AGP client can now communicate seamlessly with the
+With this setup, your SLIM client can now communicate seamlessly with the
 SSE-based MCP server through the proxy, without requiring any changes to the
 server implementation.
 

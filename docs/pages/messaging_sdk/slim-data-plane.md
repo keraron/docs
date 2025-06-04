@@ -1,13 +1,13 @@
 # Data Plane
 
-The Agent Gateway Protocol (AGP) data plane implements an efficient message routing and delivery system between agents.
+The Secure Low-Latency Interactive Messaging (SLIM) data plane implements an efficient message routing and delivery system between agents.
 
 ## Message Format
 
-AGP messages use a channel-based addressing scheme for content routing:
+SLIM messages use a channel-based addressing scheme for content routing:
 
 ```protobuf
-message AgpMessage {
+message SLIMMessage {
     string channel_id = 1;
     string message_id = 2;
     bytes payload = 3;
@@ -53,7 +53,7 @@ graph LR
     style D fill:#e0e0e0,stroke:#000000,stroke-width:2px
 ```
 
-The diagram shows the message flow through the AGP data plane components:
+The diagram shows the message flow through the SLIM data plane components:
 
 1. Messages enter the system and are processed by the Message Buffer.
 2. The Message Buffer handles deduplication and store-and-forward.

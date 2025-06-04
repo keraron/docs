@@ -28,13 +28,13 @@ workflows while ensuring:
 ## Main Components
 
 Interconnecting these systems at scale requires meeting strict latency and
-response time requirements. Agent Gateway Protocol (AGP) aims to provide a secure, scalable, and
+response time requirements. Secure Low-Latency Interactive Messaging (SLIM) aims to provide a secure, scalable, and
 user-friendly communication framework that unifies state-of-the-art capabilities
 from all mentioned frameworks into a single implementation.
 
-The main components of AGP are:
+The main components of SLIM are:
 
-- [Security layer](./agp-security-layer)
-- [Data plane](./agp-data-plane)
-- [Session layer](./agp-session-layer)
-- [Control plane](./agp-control-plane)
+- [Security layer](./slim-security-layer)
+- [Data plane](./slim-data-plane)
+- [Session layer](./slim-session-layer)
+- [Control plane](./slim-control-plane)

@@ -1,6 +1,6 @@
 # Session Layer
 
-The Agent Gateway Protocol (AGP) Session Layer manages and maintains the communication state between agents and their respective gateways. It provides essential services for establishing, maintaining, and terminating sessions between communicating entities in the AGP ecosystem.
+The Secure Low-Latency Interactive Messaging (SLIM) Session Layer manages and maintains the communication state between agents and their respective SLIM nodes. It provides essential services for establishing, maintaining, and terminating sessions between communicating entities in the SLIM ecosystem.
 
 ## Flow Diagram
 
@@ -8,24 +8,24 @@ The Agent Gateway Protocol (AGP) Session Layer manages and maintains the communi
 sequenceDiagram
     participant Agent
     participant SessionLayer
-    participant Gateway
+    participant SLIM
 
     Agent->>SessionLayer: Initialize Session
-    SessionLayer->>Gateway: Session Request
-    Gateway->>SessionLayer: Session Acknowledgment
+    SessionLayer->>SLIM: Session Request
+    SLIM->>SessionLayer: Session Acknowledgment
     SessionLayer->>Agent: Session Established
 
     rect rgb(200, 200, 200)
         note right of Agent: Active Session
         Agent->>SessionLayer: Data Exchange
-        SessionLayer->>Gateway: Session-managed Communication
-        Gateway->>SessionLayer: Response
+        SessionLayer->>SLIM: Session-managed Communication
+        SLIM->>SessionLayer: Response
         SessionLayer->>Agent: Processed Response
     end
 
     Agent->>SessionLayer: Terminate Session
-    SessionLayer->>Gateway: Session Closure
-    Gateway->>SessionLayer: Closure Acknowledgment
+    SessionLayer->>SLIM: Session Closure
+    SLIM->>SessionLayer: Closure Acknowledgment
     SessionLayer->>Agent: Session Terminated
 ```
 

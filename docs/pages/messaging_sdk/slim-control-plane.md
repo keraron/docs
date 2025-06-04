@@ -1,6 +1,6 @@
 # Control Plane
 
-The Control Plane is a cloud-based controller that manages and orchestrates the configuration of agent gateway networks. It enables administrators to define, control, and interconnect limited domain networks while facilitating peering relationships with external networks.
+The Control Plane is a cloud-based controller that manages and orchestrates the configuration of SLIM nodes networks. It enables administrators to define, control, and interconnect limited domain networks while facilitating peering relationships with external networks.
 
 ## Architecture
 
@@ -14,9 +14,9 @@ graph TB
     end
 
     subgraph Domain Network
-        GW1[Gateway 1]
-        GW2[Gateway 2]
-        GW3[Gateway 3]
+        SLIM1[SLIM 1]
+        SLIM2[SLIM 2]
+        SLIM3[SLIM 3]
     end
 
     subgraph External Networks
@@ -27,9 +27,9 @@ graph TB
     CP --> PM
     CP --> TM
     CP --> PR
-    TM --> GW1
-    TM --> GW2
-    TM --> GW3
+    TM --> SLIM1
+    TM --> SLIM2
+    TM --> SLIM3
     PR --> EN1
     PR --> EN2
 ```
@@ -40,7 +40,7 @@ graph TB
 
 - Provides centralized management interface
 - Handles network-wide configuration
-- Monitors gateway health and status
+- Monitors SLIM nodes health and status
 - Implements control policies
 
 ### Policy Manager
@@ -53,8 +53,8 @@ graph TB
 ### Topology Manager
 
 - Maintains network topology
-- Handles gateway discovery
-- Manages gateway connections
+- Handles SLIM nodes discovery
+- Manages SLIM nodes connections
 - Optimizes routing paths
 
 ### Peering Registry
@@ -67,7 +67,7 @@ graph TB
 ## Features
 
 1. **Network Configuration**
-   - Gateway deployment and configuration
+   - SLIM nodes deployment and configuration
    - Network topology management
    - Policy distribution
    - Resource allocation
@@ -94,7 +94,7 @@ graph TB
 
 The control plane integrates with:
 
-- Gateway management interfaces
+- SLIM node management interfaces
 - Security services
 - Monitoring systems
 - External network controllers
