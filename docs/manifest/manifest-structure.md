@@ -1,6 +1,7 @@
 # Agent Manifest Structure
 
 An Agent Manifest includes the following sections:
+
 * [Agent Identification and Metadata](#agent-identification-and-metadata)
 * [Agent Interface Data Structure Specification](#agent-interface-data-structure-specification)
 * [Agent Deployment and Consumption](#agent-deployment-and-consumption)
