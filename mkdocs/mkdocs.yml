@@ -9,8 +9,8 @@ repo_url: https://github.com/agntcy/docs
 # extra:
 #   generator: false
 
-# extra_css:
-#   - stylesheets/extra.css
+extra_css:
+  - stylesheets/custom.css
 
 markdown_extensions:
   - admonition
