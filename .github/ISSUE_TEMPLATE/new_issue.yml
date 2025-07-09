@@ -14,6 +14,29 @@ body:
       description: Please provide a description of the problem.
     validations:
       required: true
+    - type: textarea
+    id: description
+    attributes:
+      label: Prposed Issue Solution
+      description: Please provide a description of how the problem can be solved.
+    validations:
+      required: true
+    - type: dropdown
+    id: version
+    attributes:
+      label: Affected Component
+      description: |
+        If applicable, provide the component relevant to this issue.
+      options:
+        - CSIT
+        - Directory
+        - Identity
+        - OASF
+        - SLIM
+        - Other
+      default: 0
+    validations:
+      required: false
   - type: checkboxes
     id: checklist
     attributes:
