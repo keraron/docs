@@ -25,8 +25,7 @@ body:
     id: version
     attributes:
       label: Affected Component
-      description: |
-        If applicable, provide the component relevant to this issue.
+      description: If applicable, provide the component relevant to this issue.
       options:
         - CSIT
         - Directory
