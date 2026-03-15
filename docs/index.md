@@ -1,3 +1,8 @@
+---
+title: AGNTCY Documentation
+template: home.html
+---
+
 # AGNTCY Origins
 
 AGNTCY began with Outshift by Cisco's vision of an [Internet of Agents](https://outshift.cisco.com/the-internet-of-agents)—recognizing that AI agents were being built in isolated silos, unable to collaborate across organizational boundaries. Their foundational white paper identified the critical infrastructure gap preventing agents from working together at scale.
